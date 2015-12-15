@@ -1,4 +1,4 @@
-<?php include ("templates/headr.php"); ?>
+<?php include ("templates/header.php"); ?>
 <?php include ("templates/nav.php"); ?>
 <html>
 Contact body

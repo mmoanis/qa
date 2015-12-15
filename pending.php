@@ -1,5 +1,4 @@
-<?php include ("templates/headr.php"); ?>
-<?php include ("templates/nav.php"); ?>
+<?php include ("templates/header.php"); ?>
 <html>
 Put Body
 </html>
