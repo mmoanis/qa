@@ -28,7 +28,7 @@
 			width: 1024px;
 			padding-top: 75px;
 			padding-left: 270px;
-			
+
 		}
 
 		#navi ul
@@ -55,9 +55,9 @@
 				</div>
 				<div id="navi">
 					<ul>
-						<li><a href="#"><img src="templates/images/home.png" alt="home"/></a></li>
-						<li><a href="#"><img src="templates/images/about.png" alt="about"/></a></li>
-						<li><a href="#"><img src="templates/images/contact.png" alt="contact"/></a></li>
+						<li><a href="index.php"><img src="templates/images/home.png" alt="home"/></a></li>
+						<li><a href="about.php"><img src="templates/images/about.png" alt="about"/></a></li>
+						<li><a href="contact.php"><img src="templates/images/contact.png" alt="contact"/></a></li>
 					</ul>
 				</div>
 				<h1>Quality Assurance</h1>
