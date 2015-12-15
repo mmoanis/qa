@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div id="footer">
-			Copyright © eng.islam.khaled@gmail.com
+			Copyright Cairo University, Faculty of Engineering.
 		</div>
 	</body>
 </html>

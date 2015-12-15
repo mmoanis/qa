@@ -8,7 +8,7 @@
 			padding:10px;
 		}
 		#header-inside {
-			background-image: url(templates/images/headerbanner.png);
+			background-image: url(static-files/images/headerbanner.png);
 			background-size: 950px;
 			background-repeat: no-repeat;
 			width: 1024px;
@@ -51,13 +51,13 @@
 		<div id="header">
 			<div id="header-inside">
 				<div id="logo">
-					<a href="#"><img src="templates/images/cairouniversity.png" width="90" height="75"/></a>
+					<a href="#"><img src="static-files/images/cairouniversity.png" width="90" height="75"/></a>
 				</div>
 				<div id="navi">
 					<ul>
-						<li><a href="index.php"><img src="templates/images/home.png" alt="home"/></a></li>
-						<li><a href="about.php"><img src="templates/images/about.png" alt="about"/></a></li>
-						<li><a href="contact.php"><img src="templates/images/contact.png" alt="contact"/></a></li>
+						<li><a href="index.php"><img src="static-files/images/home.png" alt="home"/></a></li>
+						<li><a href="about.php"><img src="static-files/images/about.png" alt="about"/></a></li>
+						<li><a href="contact.php"><img src="static-files/images/contact.png" alt="contact"/></a></li>
 					</ul>
 				</div>
 				<h1>Quality Assurance</h1>
