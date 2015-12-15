@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<div id="footer">
-			Copyright © eng.islam.khaled@gmail.com
+			Copyright ï¿½ eng.islam.khaled@gmail.com
 		</div>
 	</body>
 </html>
