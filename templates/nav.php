@@ -5,13 +5,15 @@
 	    height:462px;
 	    width:100px;
 	    float:left;
-	    padding:5px;	      
+	    padding:5px;
 	}
 </style>
 
 <div id="nav">
-	<a href="#">Directory1 </a><br>
-	<a href="#">Directory2</a><br>
-	<a href="#">Directory3</a>
+	<?php
+		foreach ($navbar_content as $value)
+		{
+			echo "<a href=" . $value[0] . ">". $value[1] . "</a><br>";
+		}
+	?>
 </div>
-

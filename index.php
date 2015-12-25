@@ -10,5 +10,11 @@
     $body_section_scripts = "";
     $body_section_content = "";
 
+    $navbar_content = array(
+        array("#", "Home"),
+        array("about.php", "About us."),
+        array("contact.php", "contact us.")
+    );
+
     include ("templates/base.php");
 ?>
