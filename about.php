@@ -11,8 +11,8 @@
     $body_section_content = "";
 
     $navbar_content = array(
-        array("#", "Home"),
-        array("about.php", "About us."),
+        array("index.php", "Home"),
+        array("#", "About us."),
         array("contact.php", "contact us.")
     );
 
