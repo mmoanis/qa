@@ -85,6 +85,52 @@
 		return $list;
 	}
 	
+	//get list of all courses
+	function getAllCourses(){
+	
+		checkConnectivity();
+		
+		$list= array();
+		$query =sprintf("select * from course");
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		while($row = mysqli_fetch_assoc($result)){
+			$list[]=$row;
+		}
+		
+		return $list;
+	
+	}
+
+	//get list of courses in a certain department
+	function getAllCoursesByDepartmentID($department_id){
+		checkConnectivity();
+		
+		$list= array();
+		$query =sprintf("select * from course where department_id = %s",$department_id);
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		while($row = mysqli_fetch_assoc($result)){
+			$list[]=$row;
+		}
+		
+		return $list;
+	}
+	
+	// get list of all courses given by a certain instructor
+	function getAllCoursesByInstructorID($instructor_id){
+		checkConnectivity();
+		
+		$list= array();
+		$query =sprintf("select * from course where instructor_id = %s",$instructor_id);
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		while($row = mysqli_fetch_assoc($result)){
+			$list[]=$row;
+		}
+		
+		return $list;
+		
+	}
+	
+	
 	//return all user's info by ID
 	function getUserInfoByUserID($id){
 		checkConnectivity();
