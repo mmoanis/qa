@@ -18,8 +18,14 @@
     $body_section_styles = "";
     $body_section_scripts = "";
 
+    require('../database/selectQuires.php');
     // TODO: fill admin content when database is ready
-    $body_section_content = '';
+    $result = getAllPendingUsers();
+    $body_section_content = '<div><h1>List of pending users</h1><div>Usernames:<select>';
+    foreach ($result as $val) {
+        $body_section_content .=  "<option value=" . $val['ID'] . ">" . $val['name'] . "</option>";
+    }
+    $body_section_content .= '</select></div></div>' ;
 
     $navbar_content = array(
         array("../index.php", "Home"),
