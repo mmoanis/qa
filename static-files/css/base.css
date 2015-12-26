@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @charset "UTF-8";
-	
+
 	#header {
 		background: rgba(4, 40, 68, 0.85);
 		color:white;
@@ -46,8 +46,8 @@
 		padding: 0px;
 		margin: 0px;
 	}
-	a:link{color:white;}
-	a:visited{color:white;}
+	a:link{color:#0964a9;}
+	a:visited{color:#0964a9;}
 	#footer {
 		position:absolute;
 		bottom:0;
@@ -60,7 +60,7 @@
 	}
 	#nav {
 	    line-height:40px;
-	    background-color:grey;
+	    background-color:#999999;
 	    height:462px;
 	    width:100px;
 	    float:left;
