@@ -21,11 +21,13 @@
     require('../database/selectQuires.php');
     // TODO: fill admin content when database is ready
     $result = getAllPendingUsers();
-    $body_section_content = '<div><h1>List of pending users</h1><div>Usernames:<select>';
+    $body_section_content = '<div><h1>List of pending users</h1><div>Usernames:<select name="pendingDropDownList">';
     foreach ($result as $val) {
         $body_section_content .=  "<option value=" . $val['ID'] . ">" . $val['name'] . "</option>";
     }
     $body_section_content .= '</select></div></div>' ;
+    $select_pending_option = $_POST['pendingDropDownList'];
+    $body_section_content .= '<a href="user.php?page_user_id="' . $select_pending_option . '""'
 
     $navbar_content = array(
         array("../index.php", "Home"),
