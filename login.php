@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html >
   <head>
@@ -13,8 +14,6 @@
   <body>
       <div class="wrapper">
 <?php
-  session_start();
-
   // if user is already loged in, redirect him to the homepage.
   if (isset($_SESSION['user_id']))
   {
