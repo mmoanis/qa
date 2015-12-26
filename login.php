@@ -6,9 +6,9 @@
     <title>Cairo University, Faculty of Engineering.</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static-files/css/loginnormalize.css">
-    <link rel="stylesheet" href="static-files/css/loginstyle.css">
-    <script src="static-files/js/loginprefixfree.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/qa/static-files/css/loginnormalize.css">
+    <link rel="stylesheet" href="http://localhost/qa/static-files/css/loginstyle.css">
+    <script src="http://localhost/qa/static-files/js/loginprefixfree.min.js"></script>
   </head>
 
   <body>

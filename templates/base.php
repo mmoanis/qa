@@ -7,7 +7,7 @@
         <?php echo $header_section_metas ?>
         <?php echo $header_section_scripts ?>
         <?php echo $header_section_extras ?>
-        <link rel="stylesheet" href="static-files/css/base.css"></link>
+        <link rel="stylesheet" href="http://localhost/qa/static-files/css/base.css"></link>
     </head>
 
     <body <?php echo $body_tag_extras ?> >
