@@ -17,10 +17,9 @@
 
     $body_section_styles = "";
     $body_section_scripts = "";
-    $body_section_content = 'Admin Content';
 
-
-
+    // TODO: fill admin content when database is ready
+    $body_section_content = '';
 
     $navbar_content = array(
         array("../index.php", "Home"),
