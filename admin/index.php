@@ -20,15 +20,23 @@
 
     require('../database/selectQuires.php');
     // TODO: fill admin content when database is ready
-    $result = getAllPendingUsers();
-    $body_section_content = '<div><h1>List of pending users</h1><div>Usernames:<select name="pendingDropDownList">';
-    foreach ($result as $val) {
-        $body_section_content .=  "<option value=" . $val['ID'] . ">" . $val['name'] . "</option>";
+    $result_pending = getAllPendingUsers();
+    $body_section_content = '<h1>List of pending users</h1>';
+    $body_section_content .= '<ol>';
+    foreach ($result_pending as $val) {
+        $body_section_content .=  '<li><a href="user.php?page_user_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
     }
-    $body_section_content .= '</select></div></div>' ;
-    $select_pending_option = $_POST['pendingDropDownList'];
-    $body_section_content .= '<a href="user.php?page_user_id="' . $select_pending_option . '""'
+    $body_section_content .= '</ol>' ;
+    // Selected value in pending drop down
 
+    $result_allusers = getAllUsers();
+    $body_section_content = '<h1>List of all users</h1>';
+    $body_section_content .= '<ol>';
+    foreach ($result_allusers as $val) {
+        $body_section_content .=  '<li><a href="user.php?page_user_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
+    }
+    $body_section_content .= '</ol>' ;
+    
     $navbar_content = array(
         array("../index.php", "Home"),
         array("../about.php", "About us."),
