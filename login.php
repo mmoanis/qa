@@ -78,7 +78,6 @@
       {
              echo ' <form class="login" action="login.php" method="POST">
                 <p class="title">Log in</p>
-
                 <input type="text" name="username" placeholder="Username" autofocus required/>
                 <i class="fa fa-user"></i>
                 <input type="password" name="password" placeholder="Password" required/>

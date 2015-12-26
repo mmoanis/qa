@@ -12,6 +12,8 @@
 
     $navbar_content = array(
         array("#", "Home"),
+        array("login.php", "Login."),
+        array("signup.php", "Sign up."),
         array("about.php", "About us."),
         array("contact.php", "contact us.")
     );
