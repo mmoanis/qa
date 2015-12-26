@@ -30,13 +30,13 @@
     // Selected value in pending drop down
 
     $result_allusers = getAllUsers();
-    $body_section_content = '<h1>List of all users</h1>';
+    $body_section_content .= '<h1>List of all users</h1>';
     $body_section_content .= '<ol>';
     foreach ($result_allusers as $val) {
         $body_section_content .=  '<li><a href="user.php?page_user_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
     }
     $body_section_content .= '</ol>' ;
-    
+
     $navbar_content = array(
         array("../index.php", "Home"),
         array("../about.php", "About us."),
