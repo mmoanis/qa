@@ -27,6 +27,29 @@
 
         $error = false;
 
+        // TODO: check username not used before
+        if (strlen($username) > 30)
+        {
+            $error = 'Username must be less than 30 characters.\n';
+        }
+
+        if (strlen($name) > 30)
+        {
+            $error = 'Name must be less than 30 characters.\n';
+        }
+
+        if (strlen($password) > 30)
+        {
+            $error = 'Password must be less than 30 characters.\n';
+        }
+
+        // TODO: uncomment on deploy, and check email not used before
+        //if (filter_var($email, FILTER_VALIDATE_EMAIL) === false)
+        //{
+        //  $error .= 'Not Valide Email Address.\n';
+        //}
+
+
         // validate input for duplicates
         require('database/insetQuires.php');
         //require("database/selectQuires.php");
