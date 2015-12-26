@@ -12,11 +12,11 @@
 
     <body <?php echo $body_tag_extras ?> >
         <!-- Header -->
-        <?php include ("templates/headr.php"); ?>
+        <?php include (dirname(__FILE__ ) . "/headr.php"); ?>
         <!-- Header Ends -->
 
         <!-- Nav Bar -->
-        <?php include ("templates/nav.php"); ?>
+        <?php include (dirname(__FILE__ ) . "/nav.php"); ?>
         <!-- Nav Bar Ends -->
 
         <?php echo $body_section_styles ?>
@@ -27,7 +27,7 @@
         <!-- Content Ends -->
 
         <!-- Footer -->
-        <?php include ("templates/footer.php"); ?>
+        <?php include (dirname(__FILE__ ) . "/footer.php"); ?>
         <!-- Footer Ends -->
     </body>
 </html>
