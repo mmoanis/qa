@@ -27,20 +27,27 @@
 
         $error = false;
 
-        // TODO: check username not used before
+        // validate input for duplicates
+        require('database/insetQuires.php');
+        require("database/selectQuires.php");
+
         if (strlen($username) > 30)
         {
-            $error = 'Username must be less than 30 characters.\n';
+            $error = '<li>Username must be less than 30 characters.</li>';
+        }
+        else if (checkUserNameExists($username))
+        {
+            $error = '<li>Username already exists.</li>';
         }
 
         if (strlen($name) > 30)
         {
-            $error = 'Name must be less than 30 characters.\n';
+            $error .= '<li>Name must be less than 30 characters.</li>';
         }
 
         if (strlen($password) > 30)
         {
-            $error = 'Password must be less than 30 characters.\n';
+            $error .= '<li>Password must be less than 30 characters.</li>';
         }
 
         // TODO: uncomment on deploy, and check email not used before
@@ -48,11 +55,10 @@
         //{
         //  $error .= 'Not Valide Email Address.\n';
         //}
-
-
-        // validate input for duplicates
-        require('database/insetQuires.php');
-        //require("database/selectQuires.php");
+        if (checkEmailExists($email))
+        {
+            $error .= '<li>User email already exists.</li>';
+        }
 
         if (!$error)
         {
@@ -69,9 +75,10 @@
         }
         else
         {
+            echo '<div style="color:white;">';
             echo "<h1> The following errors occured, fix them and try again. </h1>";
-            echo "<p>" . $error . "</p>";
-            header('refresh:3; url=http://localhost/qa/signup.php');
+            echo '<ol>' . $error . "</ol></div>";
+            header('refresh:5; url=http://localhost/qa/signup.php');
         }
 
         unset($_POST['email']);
