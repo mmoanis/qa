@@ -2,7 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Animated login form</title>
+    <title>Login Form</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static-files/css/loginnormalize.css">
@@ -27,7 +27,7 @@
           <span class="state">Log in</span>
         </button>
     </form>
-    <footer><a target="blank" href="http://boudra.me/">boudra.me</a></footer>
+    <footer><a target="blank" href="http://boudra.me/">Cairo University, Faculty of Engineering.</a></footer>
     </p>
   </div>
 
