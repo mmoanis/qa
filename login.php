@@ -64,6 +64,12 @@
                   header('refresh:4; url=http://localhost/qa/department-managment/index.php');
           		die();
               }
+              else if (strcmp($type, 'waiting user') == 0)
+              {
+                  echo "<p>Welcome to the website, you will be redirected to the homepage ...</p>";
+                  header('refresh:1; url=http://localhost/qa/pending.php');
+          		die();
+              }
               else
               {
                   echo "<p>There was a problem on login, please contact website support!</p>";
