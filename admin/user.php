@@ -23,32 +23,27 @@
     $info = getUserInfoByUserID($_REQUEST['page_user_id']);
 
     $body_section_content = '<h1> Information About User: </h1>';
-    $body_section_content .= '
-    <table border="1">
-        <tr>
-            <td> username </td>
-            <td> email </td>
-            <td> name </td>
-            <td> type </td>
-        </tr>
-        <tr>
-            <td>' . $info['user_name'] . ' </td>
-            <td>' . $info['email']    . ' </td>
-            <td>' . $info['name']     . ' </td>
-            <td>' . $type             . ' </td>
-    </table>';
-
     $body_section_content .= '<p>you can change the user\'s role, approve or delete the user.</p>
      <form action="approve.php">
-        User Role:<select name="type">
-            <option value="instructor">Instructor</option>
+        ID: <input type="text" name="ID" readonly value="'. $info['ID'] .'"/><br>
+        username: <input type="text" name="username" readonly value="'. $info['user_name'] .'"/><br>
+        Name: <input type="text" name="name" readonly value="'. $info['name'] .'"/><br>
+        email: <input type="text" name="email" readonly value="'. $info['email'] .'"/><br>
+        Role: <input type="text" name="role" readonly value="'. $type .'"/><br>
+        new role:<select name="type">
+            <option value="instractor">Instructor</option>
             <option value="admin">Admin</option>
-            <option value="qa-member">QA member</option>
-            <option value="department">Department Manager</option>
+            <option value="qa_member">QA member</option>
+            <option value="department_manager">Department Manager</option>
         </select><br>
         Action:<select name="action">
-            <option value="approve">Approve</option>
-            <option value="admin">Delete</option>
+        ';
+    if (strcmp($type, 'waiting user') == 0)
+        $body_section_content .= '<option value="approve">Approve</option>';
+    else
+        $body_section_content .= '<option value="change">change</option>';
+
+    $body_section_content .= '<option value="delete">Delete</option>
         </select><br>
         <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
     </form>';
