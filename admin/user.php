@@ -23,7 +23,7 @@
     $info = getUserInfoByUserID($_REQUEST['page_user_id']);
 
     $body_section_content = '<h1> Information About User: </h1>';
-    $body_section_content = '
+    $body_section_content .= '
     <table border="1">
         <tr>
             <td> username </td>
@@ -38,10 +38,20 @@
             <td>' . $type             . ' </td>
     </table>';
 
-    if (strcmp($type, 'waiting user') == 0)
-    {
-        $body_section_content .= '';
-    }
+    $body_section_content .= '<p>you can change the user\'s role, approve or delete the user.</p>
+     <form action="approve.php">
+        User Role:<select name="type">
+            <option value="instructor">Instructor</option>
+            <option value="admin">Admin</option>
+            <option value="qa-member">QA member</option>
+            <option value="department">Department Manager</option>
+        </select><br>
+        Action:<select name="action">
+            <option value="approve">Approve</option>
+            <option value="admin">Delete</option>
+        </select><br>
+        <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
+    </form>';
 
     $navbar_content = array(
         array("../index.php", "Home"),
