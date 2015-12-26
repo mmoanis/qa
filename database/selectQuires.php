@@ -1,7 +1,7 @@
 <?php
 
 		$connection_link=NULL;
-	function connectTODb(){
+	 function connectTODb1(){
 		$user="root";
 		$password="";
 		$database="qadb";
@@ -12,23 +12,23 @@
 		}
 	}	
 	
-	function closeConnection(){	
+	 function closeConnection1(){	
 		if ($GLOBALS['connection_link'] != NULL)
 		{
 			mysqli_close($GLOBALS['connection_link']);
 		}
 	}
 	
-	function checkConnectivity(){
+	 function checkConnectivity1(){
 		if ($GLOBALS['connection_link'] == NULL)
 		{
-				connectTODb();
+				connectTODb1();
 		}
 	}
 	
 	//return list of all users
 	function getAllUsers(){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select * from user");
@@ -42,7 +42,7 @@
 	
 	//get list of all admins
 	function getAllAdmins(){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select * from admin");
@@ -56,7 +56,7 @@
 	
 	// get list of pending users
 	function getAllPendingUsers(){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select ID from user");
@@ -73,7 +73,7 @@
 	
 	//get list of all departments
 	function getAllDepartments(){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select * from department");
@@ -88,7 +88,7 @@
 	//get list of all courses
 	function getAllCourses(){
 	
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select * from course");
@@ -103,7 +103,7 @@
 
 	//get list of courses in a certain department
 	function getAllCoursesByDepartmentID($department_id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select * from course where department_id = %s",$department_id);
@@ -117,7 +117,7 @@
 	
 	// get list of all courses given by a certain instructor
 	function getAllCoursesByInstructorID($instructor_id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$list= array();
 		$query =sprintf("select * from course where instructor_id = %s",$instructor_id);
@@ -133,7 +133,7 @@
 	
 	//return all user's info by ID
 	function getUserInfoByUserID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select * from user where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -145,7 +145,7 @@
 	
 	// return user's name by ID 
 	function getNameByUserID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select name from user where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -157,7 +157,7 @@
 	
 	//return user's userName by ID 
 	function getUserNameByUserID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select user_name from user where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -168,7 +168,7 @@
 	}
 	// return user email by ID
 	function getEmailByUserID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select email from user where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -181,7 +181,7 @@
 	//get user info by user_name and password 
 	//used when user logs in
 	function getUserInfoByCredential($user_name,$password){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select * from user where user_name = '%s' AND password ='%s'",$user_name,$password);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -194,7 +194,7 @@
 	
 	//returns user type as a string 
 	function getUserTypeByID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select * from qa_member where ID = '%s'",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -231,7 +231,7 @@
 	
 	//get department info by department ID
 	function getInfoByDepartmentID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select * from department where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -243,7 +243,7 @@
 	
 	//get department name by id
 	function getNameByDepartmentID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select name from department where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -255,7 +255,7 @@
 	
 	// get department manager_id by department name
 	function getManagerIDByDepartmentID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select manager_id from department where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -267,7 +267,7 @@
 	
 	//get file info by file ID
 	function getInfoByFileID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select * from  file where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -278,7 +278,7 @@
 	}	
 	// get file course ID by file ID
 	function getCourseIDByFileID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select course_id from  file where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -289,7 +289,7 @@
 	}
 	//get file type by file ID
 	function getTypeByFileID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select type from file where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -301,7 +301,7 @@
 	
 	//get course info by course id
 	function getInfoByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select * from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -314,7 +314,7 @@
 	
 	//get course code by course id
 	function getCodeByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select code from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -326,7 +326,7 @@
 	
 	//get course name by course id
 	function getNameByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select name from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -338,7 +338,7 @@
 	 
 	//get course semester by course id
 	function getSemesterByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select semester from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -350,7 +350,7 @@
 	
 	//get course year by course id
 	function getYearByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select year from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -362,7 +362,7 @@
 	
 	//get instructor_id  by course id
 	function getInstructorIDByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select instructor_id from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
@@ -374,7 +374,7 @@
 	
 	//get department_id  by course id
 	function getDepartmentIDByCourseID($id){
-		checkConnectivity();
+		checkConnectivity1();
 		
 		$query =sprintf("select department_id from course where ID = %s",$id);
 		$result =mysqli_query($GLOBALS['connection_link'],$query);
