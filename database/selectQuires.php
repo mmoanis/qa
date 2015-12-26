@@ -1,24 +1,27 @@
 <?php
-
-	$connection_link=false;
+		$connection_link=NULL;
 	function connectTODb(){
 		$user="root";
 		$password="";
 		$database="qadb";
-		$GLOBALS['connection_link'] = mysql_connect('localhost',$user,$password);
-		@mysql_select_db($database) or die( "Unable to select database");
+		$GLOBALS['connection_link'] =  mysqli_connect("localhost",$user,$password,'qadb');
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
 	}
 
 	function closeConnection(){
-		if(is_resource($GLOBALS['connection_link'])){
-			mysql_close($GLOBALS['connection_link']);
-			echo 'out';
+		if ($GLOBALS['connection_link'] != NULL)
+		{
+			mysqli_close($GLOBALS['connection_link']);
 		}
 	}
 
 	function checkConnectivity(){
-		if(!is_resource($GLOBALS['connection_link'])){
-			connectTODb();
+		if ($GLOBALS['connection_link'] == NULL)
+		{
+				connectTODb();
 		}
 	}
 
@@ -27,8 +30,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select * from user where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -39,8 +42,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select name from user where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row['name'];
 		}
 		return false;
@@ -51,8 +54,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select user_name from user where ID = %s",$id);
-		$result =mysql_query($query);
-		if($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if($row = mysqli_fetch_assoc($result)) {
 			return $row['user_name'];
 		}
 		return false;
@@ -62,8 +65,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select email from user where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row['email'];
 		}
 		return false;
@@ -75,8 +78,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select * from user where user_name = '%s' AND password ='%s'",$user_name,$password);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -88,29 +91,35 @@
 		checkConnectivity();
 
 		$query =sprintf("select * from qa_member where ID = '%s'",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return 'qa_member';
 		}
 		$query =sprintf("select * from admin where ID = '%s'",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return 'admin';
 		}
 
 		$query =sprintf("select * from instractor where ID = '%s'",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return 'instractor';
 		}
 
 		$query =sprintf("select * from department_manager where ID = '%s'",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return 'department_manager';
 		}
 
-		return false;
+		$query =sprintf("select * from user where ID = '%s'",$id);
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
+			return 'waiting user';
+		}
+
+		return 'non-registered user';
 
 	}
 
@@ -119,8 +128,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select * from department where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -131,8 +140,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select name from department where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -143,8 +152,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select manager_id from department where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)){
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)){
 			return $row;
 		}
 		return false;
@@ -155,8 +164,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select * from  file where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -166,8 +175,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select course_id from  file where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -177,8 +186,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select type from file where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -189,8 +198,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select * from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -202,8 +211,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select code from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -214,8 +223,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select name from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -226,8 +235,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select semester from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -238,8 +247,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select year from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -250,8 +259,8 @@
 		checkConnectivity();
 
 		$query =sprintf("select instructor_id from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
@@ -262,14 +271,10 @@
 		checkConnectivity();
 
 		$query =sprintf("select department_id from course where ID = %s",$id);
-		$result =mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) {
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if ($row = mysqli_fetch_assoc($result)) {
 			return $row;
 		}
 		return false;
 	}
-
-
-
-
  ?>

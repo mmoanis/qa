@@ -1,24 +1,28 @@
 <?php
 
-	$connection_link=false;
+	$connection_link=NULL;
 	function connectTODb(){
 		$user="root";
 		$password="";
 		$database="qadb";
-		$GLOBALS['connection_link'] = mysql_connect('localhost',$user,$password);
-		@mysql_select_db($database) or die( "Unable to select database");
+		$GLOBALS['connection_link'] =  mysqli_connect("localhost",$user,$password,'qadb');
+		if (mysqli_connect_errno())
+		{
+			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		}
 	}
 
 	function closeConnection(){
-		if(is_resource($GLOBALS['connection_link'])){
-			mysql_close($GLOBALS['connection_link']);
-			echo 'out';
+		if ($GLOBALS['connection_link'] != NULL)
+		{
+			mysqli_close($GLOBALS['connection_link']);
 		}
 	}
 
 	function checkConnectivity(){
-		if(!is_resource($GLOBALS['connection_link'])){
-			connectTODb();
+		if ($GLOBALS['connection_link'] == NULL)
+		{
+				connectTODb();
 		}
 	}
 
@@ -28,8 +32,8 @@
 		checkConnectivity();
 
 		$query =sprintf("delete  from user where ID = %s",$id);
-		mysql_query($query);
-		return mysql_affected_rows()>0 ;
+		mysqli_query($GLOBALS['connection_link'],$query);
+		return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
 	}
 
 	//delete file by id
@@ -38,9 +42,9 @@
 		checkConnectivity();
 
 		$query =sprintf("delete  from file where ID = %s",$id);
-		mysql_query($query);
+		mysqli_query($GLOBALS['connection_link'],$query);
 
-		return mysql_affected_rows()>0 ;
+		return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
 	}
 
 	// delete department by ID
@@ -49,9 +53,9 @@
 		checkConnectivity();
 
 		$query =sprintf("delete  from department where ID = %s",$id);
-		mysql_query($query);
+		mysqli_query($GLOBALS['connection_link'],$query);
 
-		return mysql_affected_rows()>0 ;
+		return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
 	}
 
 	//delete course by id
@@ -60,8 +64,8 @@
 		checkConnectivity();
 
 		$query =sprintf("delete  from course where ID = %s",$id);
-		mysql_query($query);
-		return mysql_affected_rows()>0 ;
+		mysqli_query($GLOBALS['connection_link'],$query);
+		return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
 	}
 
 	//delete admin by id
@@ -70,11 +74,8 @@
 		checkConnectivity();
 
 		$query =sprintf("delete  from admin where ID = %s",$id);
-		mysql_query($query);
-		return mysql_affected_rows()>0 ;
+		mysqli_query($GLOBALS['connection_link'],$query);
+		return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
 	}
-
-
-
 
  ?>
