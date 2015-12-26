@@ -10,5 +10,5 @@ if (isset($_SESSION['user_id']))
     session_destroy();
 }
 
-header('url=http://localhost/qa/index.php');
+header('Location: http://localhost/qa/index.php');
 ?>
