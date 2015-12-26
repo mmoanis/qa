@@ -1,13 +1,14 @@
 <!DOCTYPE HTML html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <header <?php echo $header_tag_extras ?>>
+    <head <?php echo $header_tag_extras ?>>
         <title> Cairo University, Faculty of Engineering. </title>
         <?php echo $header_section_styles ?>
         <?php echo $header_section_metas ?>
         <?php echo $header_section_scripts ?>
         <?php echo $header_section_extras ?>
-    </header>
+        <link rel="stylesheet" href="static-files/css/base.css"></link>
+    </head>
 
     <body <?php echo $body_tag_extras ?> >
         <!-- Header -->
