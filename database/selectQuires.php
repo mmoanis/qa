@@ -26,6 +26,34 @@
 		}
 	}
 	
+	//checks if username exists
+	function checkUserNameExists($user_name){
+		checkConnectivity1();
+		
+		$list= array();
+		$query =sprintf("select * from user where user_name = '%s'",$user_name);
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if($row = mysqli_fetch_assoc($result)) {
+			return true;			
+		}
+		
+		return false;
+	}
+	
+	//checks if email exists
+	function checkEmailExists($email){
+		checkConnectivity1();
+		
+		$list= array();
+		$query =sprintf("select * from user where email = '%s'",$email);
+		$result =mysqli_query($GLOBALS['connection_link'],$query);
+		if($row = mysqli_fetch_assoc($result)) {
+			return true;			
+		}
+		
+		return false;
+	}
+	
 	//return list of all users
 	function getAllUsers(){
 		checkConnectivity1();
