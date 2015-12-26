@@ -8,7 +8,9 @@
 
     $body_section_styles = "";
     $body_section_scripts = "";
-    $body_section_content = "";
+
+    // TODO: add the mail form
+    $body_section_content = "<p> We would like to here from you at any time </p>";
 
     $navbar_content = array(
         array("index.php", "Home"),

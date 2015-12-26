@@ -10,7 +10,7 @@
 
     $body_section_styles = "";
     $body_section_scripts = "";
-    $body_section_content = '<p> Welcome to the QA website for Cairo University, Faculty of Engineering</p>
+    $body_section_content = '<p> Welcome to the Quality Assurance Committee website for Cairo University, Faculty of Engineering</p>
     <p>Use the navigation bar to the left to go through the website</p>';
 
     if (isset($_SESSION['user_id']))
