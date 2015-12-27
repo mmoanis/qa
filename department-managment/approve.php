@@ -24,6 +24,6 @@
         }
     }
 
-    header('Location: http://localhost/qa/admin/index.php');
+    header('Location: http://localhost/qa/department-managment/index.php');
     die();
 ?>
