@@ -25,7 +25,6 @@
         $navbar_signup_login = false;
         $navbar_content = array(
             array("index.php" , "Home"),
-            array("http://localhost/qa/admin/index.php" , "DashBoard"),
             array("about.php", "About"),
             array("contact.php", "Contact")
         );
