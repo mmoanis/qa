@@ -231,7 +231,7 @@
 
    // get list of all courses given by a certain instructor
    function getAllCoursesByInstructorID($instructor_id){
-       checkConnectivity1();
+       checkConnectivity();
 
        $list= array();
        $query =sprintf("select * from course where instructor_id = %s order by year DESC",$instructor_id);
