@@ -268,10 +268,11 @@
 
        $query =sprintf("select * from  file where course_id = %s",$id);
        $result =mysqli_query($GLOBALS['connection_link'],$query);
-       if ($row = mysqli_fetch_assoc($result)) {
-           return $row;
+       $list = array();
+       while ($row = mysqli_fetch_assoc($result)) {
+           $list[] = $row;
        }
-       return false;
+       return $list;
    }
 
    //update file's data
