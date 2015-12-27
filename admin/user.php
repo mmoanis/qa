@@ -37,17 +37,14 @@
             <option value="admin">Admin</option>
             <option value="qa_member">QA member</option>
             <option value="department_manager">Department Manager</option>
-        </select><br>
-        Action:<select name="action">
-        ';
-    if (strcmp($type, 'waiting user') == 0)
-        $body_section_content .= '<option value="approve">Approve</option>';
-    else
-        $body_section_content .= '<option value="change">change</option>';
+        </select><br>';
 
-    $body_section_content .= '<option value="delete">Delete</option>
-        </select><br>
-        <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
+    if (strcmp($type, 'waiting user') == 0)
+        $body_section_content .= '<button type="submit" name="action" value="approve">Approve</option>';
+    else
+        $body_section_content .= '<button type="submit" name="action" value="change">change</option>';
+
+    $body_section_content .= '<button type="submit" name="action" value="delete"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
     </form>';
     $navbar_signup_login = false;
     $navbar_content = array(
