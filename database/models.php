@@ -17,6 +17,7 @@
     function checkConnectivity(){
        if ($GLOBALS['connection_link'] == NULL)
                connectTODb();
+			   
    }
 
    //======================================== Login ===========================
@@ -202,14 +203,18 @@
    function insertCourse($code,$name,$semester,$year,$instructor_id,$department_id){
        checkConnectivity();
 
-       $query =sprintf("insert into course(code,name,semester,year,instructor_id,department_id) values('%s','%s','%s','%s',%s,%s)",$code,$name,$semester,$year,$instructor_id,$department_id);
+       $query =sprintf("insert into course(code,name,semster,year,instructor_id,department_id) values('%s','%s','%s','%s',%s,%s)",$code,$name,$semester,$year,$instructor_id,$department_id);
        mysqli_query($GLOBALS['connection_link'],$query);
-       // TODO: each course should have 6 files initially
-       //for ($i = 0; $i<6; $i++)
-       //{
-    //       insertFile($type,$course_id,$data);
-      // }
-       return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
+       //  each course should have 6 files initially
+	   $fileTypes=array("Course Specifications","Materials & Labs","Assignments & Project Documents","Midterm Exam","Final Exam","End of Course Report");
+       $i = 0;
+	   $id = mysqli_insert_id($GLOBALS['connection_link']);
+	   $result= mysqli_affected_rows($GLOBALS['connection_link']);
+	   for ($i ; $i<6; $i++)
+       {
+          insertFile($fileTypes[$i],$id,"https://www.google.com");
+       }
+       return $result>0 ;
    }
 
    //get course info by course id
@@ -241,8 +246,8 @@
        checkConnectivity();
 
        $query =sprintf("insert into file(type,course_id,data) values('%s',%s,'%s')",$type,$course_id,$data);
-       mysql_query($GLOBALS['connection_link'],$query);
-       return mysql_affected_rows($GLOBALS['connection_link'])>0 ;
+       mysqli_query($GLOBALS['connection_link'],$query);
+       return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
    }
 
    // get all files for a course
