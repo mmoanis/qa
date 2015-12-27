@@ -31,8 +31,17 @@
     $body_section_content .= '<ol>';
     foreach ($result_allcourses as $val) {
         $progress = 6 - getCourseProgress($val['ID']);
+        $missing_files = getTypesOfMissingFiles($val['ID']);
         $body_section_content .=  '<li><a href="course.php?page_course_id=' . $val['ID'] . '">' . $val['name'] . '</a>
-        <progress value="'.$progress.'" max="6"></progress></li>';
+        <progress value="'.$progress.'" max="6"></progress> <p> Missing files: ';
+        if (count($missing_files) == 6) {
+            $body_section_content .= ' ALL FILES ARE MISSING!!';
+        } else {
+            foreach ($missing_files as $file) {
+                $body_section_content .= str_replace("_", " ", $file) .' --- ';
+            }
+        }
+        '</li>';
     }
     $body_section_content .= '</ol>' ;
 
