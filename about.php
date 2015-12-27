@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $navbar_signup_login = "";
 
     $logged_in_name ="Site Portal";
     
@@ -13,8 +12,9 @@
 
     $body_section_styles = "";
     $body_section_scripts = "";
-    $body_section_content = "<p> We would like to here from you at any time </p>";
-    $body_section_content .= '<p>Send us an email for <a href="mailto:technical_support@qa.eng.cu.edu.eg">technical support</a></p>';
+    $body_section_content = "";
+
+    $navbar_signup_login = "";
 
     if (isset($_SESSION['user_id']))
     {   
@@ -23,10 +23,6 @@
         $logged_in_name = "Welcome " . $loggedin_user_info['name'];
 
         $navbar_signup_login = false;
-        if (strcmp($_SESSION['type'], 'admin') != 0)
-        {
-            $body_section_content .= '<p> Send the site Admin <a href="mailto:admin@qa.eng.cu.edu.eg">email</a> </p>';
-        }
         $navbar_content = array(
             array("index.php" , "Home"),
             array("http://localhost/qa/admin/index.php" , "DashBoard"),
@@ -43,7 +39,5 @@
             array("contact.php", "Contact")
         );
     }
-
-
     include ("templates/base.php");
 ?>

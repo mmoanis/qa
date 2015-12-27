@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@charset "UTF-8";
+
+	#header {
+		/*position: fixed;
+		width: 100%;
+		z-index: 10000;*/	/*for fixing header at top but the nav is not working with that*/
+		background-color: #262626;
+		color:white;
+		text-align:center;
+		padding:10px;
+	}
+	#header-inside {
+		background-image: url(../images/headerbanner.png);
+		background-size: 1000px;
+		background-repeat: no-repeat;
+		width: 1000px;
+		height: 95px;
+		margin: auto;
+		position: relative;
+	}
+	#logo{
+		float: left;
+		padding-top: 0px;
+		padding-left: 480px;
+		position: absolute;
+	}
+	img {
+		border: none;
+	}
+	#footer {
+		position:fixed;
+		bottom:0;
+		width:100%;
+		height:50px;			/* Height of the footer */
+		background-color: #262626;
+		color:white;
+		text-align:center;
+		clear:both;
+		font-size : large;
+		font-color :#595959;
+	}
+
+}
