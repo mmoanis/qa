@@ -24,6 +24,7 @@
     $info = getInfoByCourseID($_REQUEST['page_course_id']);
     $result_derpartment = getDepartmentByManagerID($_SESSION['user_id']);
     $result_getAllInstructors = getAllInstructors();
+    $current_instructor = getUserInfoByUserID($info['instructor_id']);
     $body_section_content = '<h1> Information About Course: </h1>';
     $body_section_content .= '<form action="approve.php">
         ID: <input type="text" name="ID" readonly value="'. $info['ID'] .'"/><br>
@@ -31,8 +32,10 @@
         Name: <input type="text" name="name" readonly value="'. $info['name'] .'"/><br>
         semster: <input type="text" name="semster" readonly value="'. $info['semster'] .'"/><br>
         year: <input type="text" name="year" readonly value="'. $info['year'] .'"/><br>
-        department: <input type="text" name="department" readonly value="'. $result_derpartment['name'] .'"/><br><br>
-        <p>You can assign a new instructor to the course</p>
+        department: <input type="text" name="department" readonly value="'. $result_derpartment['name'] .'"/><br>
+        instructor name: <input type="text" name="current_instructor" readonly value="'.$current_instructor['name'].'"/><br>
+        <button type="submit" value="delete"  name="action" onclick="return confirm(\'Are you sure that you want to delete this course?\')">Delete</button>
+        <br><br><p>You can assign a new instructor to the course</p>
         Assign new instructor: <select name="instructor">';
     foreach ($result_getAllInstructors as $val) {
         $body_section_content .=  '<option value="' . $val['ID'] . '">' . $val['name'] . "</option>";
@@ -40,7 +43,7 @@
 
     $body_section_content .= '</select>
         <button type="submit" value="change"  name="action" onclick="return confirm(\'Are you sure that you want to change the instructor?\')">Change</button><br>';
-    $body_section_content .= '<button type="submit" value="delete"  name="action" onclick="return confirm(\'Are you sure that you want to delete this course?\')">Delete</button></form>';
+    $body_section_content .= '</form>';
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php" , "Home"),
