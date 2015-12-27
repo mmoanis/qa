@@ -26,7 +26,7 @@
       // check for login credentials, if user submit login request
       if (isset($_POST['username']) && isset($_POST['password']))
       {
-          require("database/selectQuires.php");
+          require('database/models.php');
           $ret = getUserInfoByCredential($_POST['username'], $_POST['password']);
           if ($ret == false)
           {
@@ -37,7 +37,7 @@
           else
           {
               $_SESSION['user_id'] = $ret['ID'];
-              $type = getUserTypeByID($ret['ID']);
+              $type = getUserTypeString($ret['type']);
               $_SESSION['type']  = $type;
 
               if (strcmp($type, 'qa_member') == 0)
