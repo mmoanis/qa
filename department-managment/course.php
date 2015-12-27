@@ -31,8 +31,9 @@
         Name: <input type="text" name="name" readonly value="'. $info['name'] .'"/><br>
         semster: <input type="text" name="semster" readonly value="'. $info['semster'] .'"/><br>
         year: <input type="text" name="year" readonly value="'. $info['year'] .'"/><br>
-        department: <input type="text" name="department" readonly value="'. $result_derpartment['name'] .'"/><br>
-        instructor:<select name="instructor">';
+        department: <input type="text" name="department" readonly value="'. $result_derpartment['name'] .'"/><br><br>
+        <p>You can assign a new instructor to the course</p>
+        Assign new instructor: <select name="instructor">';
     foreach ($result_getAllInstructors as $val) {
         $body_section_content .=  '<option value="' . $val['ID'] . '">' . $val['name'] . "</option>";
     }
