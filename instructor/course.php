@@ -44,7 +44,6 @@
             $body_section_content .= '" placeholder="Insert Link to file."/><br>';
         else
             $body_section_content .= $file['data'] . '"/><br>';
-
         $body_section_content .= 'or upload file<input type="file" name="upload_'.$file['type'].'" /><br></td>';
         ++$i;
         if ($i == 4) {
