@@ -25,7 +25,7 @@
     $files = getFilesByCourseID($_REQUEST['page_course_id']);
     $_files = array("type1" => "", "type2" => "", "type3" => "", "type4" => "", "type5" => "", "type6" => "" );
     foreach ($files as $file) {
-        $_files[$file['type']] = $file['link'];
+        $_files[$file['type']] = $file['data'];
     }
 
     $body_section_content = '<h1> Information About Course: </h1><p>You can add links to files, remove links or update links</p>';
