@@ -22,9 +22,17 @@
 
     // TODO: fill qa_member content when database is ready
     require('../database/models.php');
+    $result_allDepartments = getAllDepartments();
 
-    $body_section_content = '';
-    
+    $body_section_content = '<h1>List of Departments</h1>';
+
+    $body_section_content .= '<ol>';
+    foreach ($result_allDepartments as $val) {
+        $progress = getAvgDepartmentProgess($val['ID']);
+        $body_section_content .=  '<li>' . $val['name'] . '</a>
+        <progress value="'. $progress .'" max="1"></progress></li>';
+    }
+    $body_section_content .= '</ol>' ;
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),

@@ -35,7 +35,7 @@
     $navbar_content = array(
         array("../index.php" , "Home"),
         array("index.php" , "DashBoard"),
-        array("upload.php", "Upload file."),
+        array("upload.php", "Upload File"),
         array("../about.php", "About"),
         array("../contact.php", "Contact")
     );
