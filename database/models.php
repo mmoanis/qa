@@ -206,7 +206,7 @@
        $query =sprintf("insert into course(code,name,semster,year,instructor_id,department_id) values('%s','%s','%s','%s',%s,%s)",$code,$name,$semester,$year,$instructor_id,$department_id);
        mysqli_query($GLOBALS['connection_link'],$query);
        //  each course should have 6 files initially
-	   $fileTypes=array("Course Specifications","Materials & Labs","Assignments & Project Documents","Midterm Exam","Final Exam","End of Course Report");
+	   $fileTypes=array("Course_Specifications","Materials_&_Labs","Assignments_&_Project_Documents","Midterm_Exam","Final_Exam","End_of_Course_Report");
        $i = 0;
 	   $id = mysqli_insert_id($GLOBALS['connection_link']);
 	   $result= mysqli_affected_rows($GLOBALS['connection_link']);
@@ -278,7 +278,7 @@
    //update file's data
    function updateFileData($id,$new_data){
        checkConnectivity();
-    if (empty($new_data))
+    if (!empty($new_data))
         $query =sprintf("update file set data = '%s' where ID = %s",$new_data,$id);
     else
         $query =sprintf("update file set data = NULL where ID = %s",$id);
