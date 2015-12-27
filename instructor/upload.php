@@ -8,8 +8,8 @@
         die();
     }
     require('../database/models.php');
-    echo "Please wait while processing your request";
-    
+    echo "<h1>Please wait while processing your request</h1><p><ol>";
+
     $course = getInfoByCourseID($_POST['ID']);
     $names  = array('Course_Specifications', 'Materials_&_Labs', 'Assignments_&_Project_Documents',
         'Midterm_Exam', 'Final_Exam', 'End_of_Course_Report');
@@ -25,35 +25,34 @@
         $file = 'upload_'.$name;
 
         if (!empty($_FILES[$file]["name"])) {
-            echo
             $target_file = $target_dir . basename($_FILES[$file]["name"]);
 
             // Check if file already exists
             if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
+                echo "<li>Sorry, file already exists.</li>";
                 $uploadOk = 0;
             }
 
             // Check file size, max 32 MB
             if ($_FILES[$file]["size"] > 33554432) {
-                echo "Sorry, your file is too large." . $_FILES[$file]["size"];
+                echo "<li>Sorry, your file is too large." . $_FILES[$file]["size"] . '</li>';
                 $uploadOk = 0;
             }
 
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                echo "<li>Sorry, your file was not uploaded.</li>";
             } 
             else 
             {
                 if (move_uploaded_file($_FILES[$file]["tmp_name"], $target_file))
                 {
-                    echo "The file ". basename( $_FILES[$file]["name"]). " has been uploaded.";
+                    echo "<li>The file ". basename( $_FILES[$file]["name"]). " has been uploaded.</li>";
                     $update_link = $target_file;
                 } 
                 else
                 {
-                    echo "Sorry, there was an error uploading your file.";
+                    echo "<li>Sorry, there was an error uploading your file.</li>";
                 }
             }
         }
@@ -66,7 +65,7 @@
             }
         }
     }
-    
-    header('refresh:3; url=http://localhost/qa/instructor/index.php');
+    echo "</ol><p>";
+    //header('refresh:3; url=http://localhost/qa/instructor/index.php');
     die();
 ?>
