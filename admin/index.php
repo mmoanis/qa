@@ -18,8 +18,9 @@
     $body_section_styles = "";
     $body_section_scripts = "";
 
-    require('../database/selectQuires.php');
-    // TODO: fill admin content when database is ready
+    //require('../database/selectQuires.php');
+    require('../database/models.php');
+
     $result_pending = getAllPendingUsers();
     $body_section_content = '<h1>List of pending users</h1>';
     $body_section_content .= '<ol>';
