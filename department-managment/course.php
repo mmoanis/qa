@@ -23,9 +23,8 @@
 
     $info = getInfoByCourseID($_REQUEST['page_course_id']);
 
-    $body_section_content = '<h1> Information About User: </h1>';
-    $body_section_content .= '<p>you can change the user\'s role, approve or delete the user.</p>
-     <form action="approve.php">
+    $body_section_content = '<h1> Information About Course: </h1>';
+    $body_section_content .= '<form action="approve.php">
         ID: <input type="text" name="ID" readonly value="'. $info['ID'] .'"/><br>
         username: <input type="text" name="username" readonly value="'. $info['user_name'] .'"/><br>
         Name: <input type="text" name="name" readonly value="'. $info['name'] .'"/><br>
