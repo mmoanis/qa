@@ -22,7 +22,7 @@
 
     require('../database/models.php');
 
-    $courses_result = AllCoursesByInstructorID($_SESSION['user_id']);
+    $courses_result = getAllCoursesByInstructorID($_SESSION['user_id']);
     $body_section_content = '<h1>List of courses: </h1>';
 
     $body_section_content .= '<ol>';
