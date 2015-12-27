@@ -28,8 +28,8 @@
         $error = false;
 
         // validate input for duplicates
-        require('database/insetQuires.php');
-        require("database/selectQuires.php");
+        require('database/models.php');
+        
 
         if (strlen($username) > 30)
         {
