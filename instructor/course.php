@@ -29,21 +29,12 @@
     }
 
     $body_section_content = '<h1> Information About Course: </h1><p>You can add links to files, remove links or update links</p>';
-    $body_section_content .= '<table border=1>
-            <tr>
-                <td>Course Name</td>
-                <td>Course Code</td>
-                <td>Semester</td>
-                <td>Year</td>
-            </tr>
-            <tr>
-                <td>'. $course['name'] .'</td>
-                <td>'. $course['code'] .'</td>
-                <td>'. $course['semster'] .'</td>
-                <td>'. $course['year'] .'</td>
-            </tr>
-        </table>';
     $body_section_content .= '<form action="post" action="upload.php">
+        ID: <input type="text" readonly name="ID" value="'. $course['ID']  .'"><br>
+        Name: <input type="text" readonly name="name" value="'.$course['name'].'"><br>
+        Code: <input type="text" readonly name="code" value="'.  $course['semster'] .'"><br>
+        Semester: <input type="text" readonly name="semester" value="'. $course['year'] .'"><br>
+        Year: <input type="text" readonly name="year" value="'. $_files['type4'] .'"><br>
         Type1: <input type="text" name="type1" value="'. $_files['type1'] .'"><br>
         Type2: <input type="text" name="type2" value="'. $_files['type2'] .'"><br>
         Type3: <input type="text" name="type3" value="'. $_files['type3'] .'"><br>
