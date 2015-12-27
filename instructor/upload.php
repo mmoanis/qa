@@ -17,6 +17,7 @@
     }
 
     unset($_POST['type']);
+    unset($_POST['type']);
     header('Location: http://localhost/qa/instructor/index.php');
     die();
 ?>
