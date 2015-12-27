@@ -26,7 +26,7 @@
     $files = getFilesByCourseID($_REQUEST['page_course_id']);
 
     $body_section_content = '<h1> Information About Course: </h1><p>You can add links to files, remove links or update links</p>';
-    $body_section_content .= '<form method="POST" action="updateFile.php">
+    $body_section_content .= '<form method="POST" action="upload.php">
         ID: <input type="text" readonly name="ID" value="'. $course['ID']  .'"><br>
         Name: <input type="text" readonly name="name" value="'.$course['name'].'"><br>
         Code: <input type="text" readonly name="code" value="'.  $course['code'] .'"><br>
@@ -37,9 +37,11 @@
     {
         $body_section_content .= str_replace("_", " ", $file['type']) .': <input type="text" name="'.$file['type'].'" value="';
         if ($file['data'] == NULL)
-            $body_section_content .= '" placeholder="Insert Link to file."/><br>';
+            $body_section_content .= '" placeholder="Insert Link to file."/>';
         else
-            $body_section_content .= $file['data'] . '"/><br>';
+            $body_section_content .= $file['data'] . '"/>';
+
+        $body_section_content .= '<input type="file" name="upload_'.$file['type'].'" /><br>';
     }
     $body_section_content .= '<button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
         </form>';
