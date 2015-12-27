@@ -20,6 +20,10 @@
 
     	insertCourse($_POST['code'],$_POST['name'],$_POST['semester'],substr($_POST['year'], 0, 4),$_POST['instructor'],$department['ID']);
 
+    	// create directory for course uploads
+    	if (!file_exists('../uploads/'.$_POST['code'])) {
+    		mkdir('../uploads/'.$_POST['code'], 0777, true);
+		}
     	unset($_POST['code']);
     	unset($_POST['name']);
     	unset($_POST['semester']);
