@@ -354,6 +354,18 @@
        return $row['total'];
    
    }
+   
+   //check course code exists
+   function checkCourseCodeExists($course_code){
+		checkConnectivity();
+
+       $query =sprintf("SELECT * from course where code = '%s'",$course_code);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       if($row = mysqli_fetch_assoc($result)){
+           return true;
+       }
+	   return false;
+   }
 
    // ================================ Files ==================================
    //insert new file
