@@ -25,7 +25,7 @@
     $result_derpartment = getDepartmentByManagerID($_SESSION['user_id']);
     $department_progress = getAvgDepartmentProgess($result_derpartment['ID']);
     $body_section_content = '<h1>List of Courses in ' . $result_derpartment['name'] .' Department</h1>
-    <p>The progress of the department: <progress value="'.$department_progress.'" max="6"></progress></p>';
+    <p>The progress of the department: <progress value="'.$department_progress.'" max="1"></progress></p>';
     $body_section_content .= '<ol>';
     foreach ($result_allcourses as $val) {
         $progress = 6 - getCourseProgress($val['ID']);
