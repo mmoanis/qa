@@ -303,6 +303,20 @@
        mysqli_query($GLOBALS['connection_link'],$query);
        return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
    }
+   
+   //get number of empty files of a course
+	function getCourseProgress($course_id){
+		checkConnectivity();
+		
+       $query =sprintf("select * from file where course_id = %s and data = NULL",$course_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+	   $count =0;
+	   if($row = mysqli_fetch_assoc($result)){
+           $count = $count +1;
+       }
+       return $count;
+   
+   }
 
    // ================================ Files ==================================
    //insert new file
