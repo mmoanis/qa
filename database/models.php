@@ -88,6 +88,19 @@
        }
        return $list;
    }
+   
+   //get list of all instructors 
+   function getAllInstructors(){
+		checkConnectivity();
+       $list= array();
+       $query =sprintf("select * from user where type = 1");
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+            $list[] = $row;       
+       }
+       return $list;
+   
+   }
 
    //return all user's info by ID
    function getUserInfoByUserID($id){
@@ -225,24 +238,6 @@
        return $list;
    }
    
-   //get all instructors in a department by department Manager ID
-   function getAllInstructorsByManagerID($manager_id){
-		checkConnectivity();
-       
-	   $list= array();
-	   $id= getDepartmentIDByManagerID($manager_id);
-       $query =sprintf("select instructor_id from course where department_id = %s",$id);
-       $result =mysqli_query($GLOBALS['connection_link'],$query);
-       while($row = mysqli_fetch_assoc($result)){
-           $list[]=getUserInfoByUserID($row['instructor_id']);
-       }
-
-       return $list;
-   
-   }
-   
-   
-
    // =========================== Course ======================================
    //insert new course
    function insertCourse($code,$name,$semester,$year,$instructor_id,$department_id){
