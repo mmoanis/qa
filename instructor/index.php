@@ -20,18 +20,17 @@
     $body_section_styles = "";
     $body_section_scripts = "";
 
-    require('../database/selectQuires.php');
-    // TODO: fill instractor content when database is ready
+    require('../database/models.php');
+
     $courses_result = AllCoursesByInstructorID($_SESSION['user_id']);
-    $instructor_name_result = getNameByUserID($_SESSION['user_id']);
-    $body_section_content = '<h1>List of coursess given by ' . $instructor_name_result . ' </h1>';
+    $body_section_content = '<h1>List of courses: </h1>';
 
     $body_section_content .= '<ol>';
     foreach ($courses_result as $val) {
         $body_section_content .=  '<li><a href="course.php?page_course_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
     }
     $body_section_content .= '</ol>' ;
-    
+
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php" , "Home"),
