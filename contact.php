@@ -1,6 +1,8 @@
 <?php
     session_start();
     $navbar_signup_login = "";
+
+    $logged_in_name ="Site Portal";
     
     $header_tag_extras = "";
     $header_section_styles = "";
@@ -16,6 +18,10 @@
 
     if (isset($_SESSION['user_id']))
     {   
+        require('database/models.php');
+        $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+        $logged_in_name = "Welcome " . $loggedin_user_info['name'];
+
         $navbar_signup_login = false;
         if (strcmp($_SESSION['type'], 'admin') != 0)
         {

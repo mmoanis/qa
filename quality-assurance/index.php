@@ -22,20 +22,27 @@
 
     // TODO: fill qa_member content when database is ready
     require('../database/models.php');
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
+
     $result_allDepartments = getAllDepartments();
 
     $body_section_content = '<h1>List of Departments</h1>';
-
+    $allDepartmentsTotalAverageProgress = 0;
+    $count = 0;
     $body_section_content .= '<ol>';
     foreach ($result_allDepartments as $val) {
+        $allDepartmentsTotalAverageProgress += getAvgDepartmentProgess($val['ID']);
         $progress = getAvgDepartmentProgess($val['ID']);
         $body_section_content .=  '<li>' . $val['name'] . '</a>
         <progress value="'. $progress .'" max="1"></progress></li>';
+        $count++;
     }
-    $body_section_content .= '</ol>' ;
+    $body_section_content .= '</ol><br>Total Progress of all departments is <progress value="' . $allDepartmentsTotalAverageProgress/$count . '" max"1"></progress>';
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),
+        array("http://localhost/qa/quality-assurance/index.php" , "DashBoard"),
         array("../about.php", "About"),
         array("../contact.php", "Contact")
     );

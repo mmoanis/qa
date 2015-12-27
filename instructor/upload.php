@@ -7,7 +7,6 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
     require('../database/models.php');
 
     $course = getInfoByCourseID($_POST['ID']);

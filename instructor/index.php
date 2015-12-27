@@ -21,7 +21,9 @@
     $body_section_scripts = "";
 
     require('../database/models.php');
-
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
+    
     $courses_result = getAllCoursesByInstructorID($_SESSION['user_id']);
     $body_section_content = '<h1>List of courses: </h1>';
 

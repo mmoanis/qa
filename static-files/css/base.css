@@ -2,6 +2,9 @@
 @charset "UTF-8";
 
 	#header {
+		/*position: fixed;
+		width: 100%;
+		z-index: 10000;*/	/*for fixing header at top but the nav is not working with that*/
 		background-color: #262626;
 		color:white;
 		text-align:center;
@@ -26,7 +29,7 @@
 		border: none;
 	}
 	#footer {
-		position:absolute;
+		position:fixed;
 		bottom:0;
 		width:100%;
 		height:50px;			/* Height of the footer */

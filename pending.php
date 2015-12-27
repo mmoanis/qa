@@ -6,7 +6,9 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
+    require('database/models.php');
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = $loggedin_user_info['name'];
     $header_tag_extras = "";
     $header_section_styles = "";
     $header_section_metas = "";
