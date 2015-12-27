@@ -8,42 +8,35 @@
         die();
     }
     require('../database/models.php');
-
+    echo "Please wait while processing your request";
+    
     $course = getInfoByCourseID($_POST['ID']);
-    $files  = array('upload_Course_Specifications', 'upload_Materials_&_Labs', 'upload_Assignments_&_Project_Documents',
-        'upload_Midterm_Exam', 'upload_Final_Exam', 'upload_End_of_Course_Report');
+    $names  = array('Course_Specifications', 'Materials_&_Labs', 'Assignments_&_Project_Documents',
+        'Midterm_Exam', 'Final_Exam', 'End_of_Course_Report');
 
     $db_files = getFilesByCourseID($_POST['ID']);
 
     // base directory
-    $target_dir = "../uploads/" . $course['code'];
+    $target_dir = "../uploads/" . $course['code'] . '/';
     $uploadOk = 1;
 
-    foreach ($files as $file)
-    {
-        if (empty($_FILES[$file]["name"]))
-        {
-            // no file to upload, update file link only
-            // update course files
-            
-            foreach ($files as $file)
-            {
-                updateFileData($file['ID'],$_POST[$file['type']]);
-            }
-        }
-        else
-        {
+    foreach ($names as $name) {
+        $update_link = $_POST[$name];
+        $file = 'upload_'.$name;
+
+        if (!empty($_FILES[$file]["name"])) {
+            echo
             $target_file = $target_dir . basename($_FILES[$file]["name"]);
 
             // Check if file already exists
-            if (file_exists($target_file) {
+            if (file_exists($target_file)) {
                 echo "Sorry, file already exists.";
                 $uploadOk = 0;
             }
 
-            // Check file size
-            if ($_FILES[$file]["size"] > 500000) {
-                echo "Sorry, your file is too large.";
+            // Check file size, max 32 MB
+            if ($_FILES[$file]["size"] > 33554432) {
+                echo "Sorry, your file is too large." . $_FILES[$file]["size"];
                 $uploadOk = 0;
             }
 
@@ -53,9 +46,10 @@
             } 
             else 
             {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
+                if (move_uploaded_file($_FILES[$file]["tmp_name"], $target_file))
                 {
-                    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+                    echo "The file ". basename( $_FILES[$file]["name"]). " has been uploaded.";
+                    $update_link = $target_file;
                 } 
                 else
                 {
@@ -63,9 +57,16 @@
                 }
             }
         }
-        
+
+        // update file link
+        foreach ($db_files as $db_file) {
+            if (strcmp($db_file['type'], $name) == 0) {
+                updateFileData($db_file['ID'],$update_link);
+                break;
+            }
+        }
     }
     
-    header('Location: http://localhost/qa/index.php');
+    header('refresh:3; url=http://localhost/qa/instructor/index.php');
     die();
 ?>
