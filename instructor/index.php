@@ -15,6 +15,8 @@
     $header_section_extras = "";
     $body_tag_extras = "";
 
+    $navbar_signup_login = "";
+
     $body_section_styles = "";
     $body_section_scripts = "";
 
@@ -29,13 +31,14 @@
         $body_section_content .=  '<li><a href="course.php?page_course_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
     }
     $body_section_content .= '</ol>' ;
-
+    
+    $navbar_signup_login = false;
     $navbar_content = array(
-        array("../index.php", "Home"),
-        ay("upload.php", "Upload file."),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us."),
-        array("../logout.php", "Sign out.")
+        array("../index.php" , "Home"),
+        array("index.php" , "DashBoard"),
+        array("upload.php", "Upload file."),
+        array("../about.php", "About"),
+        array("../contact.php", "Contact")
     );
 
 

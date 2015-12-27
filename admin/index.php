@@ -7,7 +7,7 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
+    $navbar_signup_login = "";
     $header_tag_extras = "";
     $header_section_styles = "";
     $header_section_metas = "";
@@ -36,12 +36,12 @@
         $body_section_content .=  '<li><a href="user.php?page_user_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
     }
     $body_section_content .= '</ol>' ;
-
+    $navbar_signup_login = false;
     $navbar_content = array(
-        array("../index.php", "Home"),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us."),
-        array("../logout.php", "Sign out.")
+        array("../index.php" , "Home"),
+        array("index.php" , "DashBoard"),
+        array("../about.php", "About"),
+        array("../contact.php", "Contact")
     );
 
 

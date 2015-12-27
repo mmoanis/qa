@@ -7,7 +7,7 @@
     $header_section_scripts = "";
     $header_section_extras = "";
     $body_tag_extras = "";
-
+    $navbar_signup_login = "";
     $body_section_styles = "";
     $body_section_scripts = "";
     $body_section_content = '<p> Welcome to the Quality Assurance Committee website for Cairo University, Faculty of Engineering</p>
@@ -15,6 +15,7 @@
 
     if (isset($_SESSION['user_id']))
     {
+        $navbar_signup_login = false;
         // check user type
         switch ($_SESSION['type']) {
             case 'qa_member':
@@ -22,11 +23,10 @@
 
             case 'admin':
                 $navbar_content = array(
-                    array("#", "Home"),
-                    array("admin/index.php", "DashBoard."),
-                    array("about.php", "About us."),
-                    array("contact.php", "contact us."),
-                    array("logout.php", "Sign out.")
+                    array("index.php" , "Home"),
+                    array("http://localhost/qa/admin/index.php" , "DashBoard"),
+                    array("about.php", "About"),
+                    array("contact.php", "Contact")
                 );
                 break;
 
@@ -40,10 +40,9 @@
 
             case 'waiting user':
                 $navbar_content = array(
-                    array("#", "Home"),
-                    array("about.php", "About us."),
-                    array("contact.php", "contact us."),
-                    array("logout.php", "Sign out.")
+                    array("index.php" , "Home"),
+                    array("about.php", "About"),
+                    array("contact.php", "Contact")
                 );
                 break;
 
@@ -54,12 +53,11 @@
     }
     else
     {// anonymous user
+        $navbar_signup_login = true;
         $navbar_content = array(
-            array("#", "Home"),
-            array("login.php", "Login."),
-            array("signup.php", "Sign up."),
-            array("about.php", "About us."),
-            array("contact.php", "contact us.")
+            array("index.php" , "Home"),
+            array("about.php", "About"),
+            array("contact.php", "Contact")
         );
     }
 
