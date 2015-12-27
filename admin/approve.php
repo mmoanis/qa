@@ -9,9 +9,10 @@
         die();
     }
 
-    require('../database/deleteQuires.php');
-    require('../database/insetQuires.php');
-
+    //require('../database/deleteQuires.php');
+    //require('../database/insetQuires.php');
+    require('../database/models.php');
+    
     // delete the user
     if (strcmp($_REQUEST['action'], 'delete') == 0 )
     {
@@ -19,30 +20,9 @@
     }
     else
     {
-        // change to new role
-        switch ($_REQUEST['type']) {
-            case 'department_manager':
-                insertDepartmentManager($_REQUEST['ID']);
-                break;
-            case 'admin':
-                insertAdmin($_REQUEST['ID']);
-                break;
-            case 'instractor':
-                // TODO: add instructor
-                break;
-            case 'qa_member':
-                insertQaMember($_REQUEST['ID']);
-                break;
-
-            default:
-                die('dfuck!');
-                break;
-        }
-
-        // TODO: remove user from previous role
-        if (strcmp($_REQUEST['action'], 'approve') == 0 )
+        if (!updateUserType($_REQUEST['ID'], $_REQUEST['type']))
         {
-
+            die("Failed to update!");
         }
     }
 

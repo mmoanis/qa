@@ -118,6 +118,24 @@
        }
    }
 
+   //returns user type
+   function getUserType($type){
+       switch ($type) {
+           case 'admin':
+               return 0;
+           case 'instractor':
+               return 1;
+           case 'qa_member':
+               return 2;
+           case 'department_manager':
+               return 3;
+           case 'waiting user':
+                return 4;
+           default:
+               return -1;
+       }
+   }
+
    //insert new user - waiting user.
    function insertUser($name,$user_name,$password,$email){
        checkConnectivity();
@@ -130,8 +148,8 @@
    //update user's type
    function updateUserType($id,$type){
        checkConnectivity();
-
-       $query =sprintf("update user set type = %d where ID = %s",$type,$id);
+       $type = getUserType($type);
+       $query =sprintf("update user set type = %s where ID = %s",$type,$id);
        mysqli_query($GLOBALS['connection_link'],$query);
        return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
    }

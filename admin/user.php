@@ -18,9 +18,11 @@
     $body_section_styles = "";
     $body_section_scripts = "";
 
-    require('../database/selectQuires.php');
-    $type = getUserTypeByID($_REQUEST['page_user_id']);
+    //require('../database/selectQuires.php');
+    require('../database/models.php');
+
     $info = getUserInfoByUserID($_REQUEST['page_user_id']);
+    $type = getUserTypeString($info['type']);
 
     $body_section_content = '<h1> Information About User: </h1>';
     $body_section_content .= '<p>you can change the user\'s role, approve or delete the user.</p>
