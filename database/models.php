@@ -315,7 +315,7 @@
    }
 	//update course instructor_id
 	function updateCourseInstructorID($id,$new_instructor_id){
-		checkConnectivity3();
+		checkConnectivity();
 		$query =sprintf("update course set instructor_id =  %s where ID = %s",$new_instructor_id,$id);
 		mysqli_query($GLOBALS['connection_link'],$query);
 		return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
