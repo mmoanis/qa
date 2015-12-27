@@ -1,14 +1,14 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['user_id']) || strcmp($_SESSION['type'], 'instractor') != 0  || !isset($_POST['type']))
+    if (!isset($_SESSION['user_id']) || strcmp($_SESSION['type'], 'instractor') != 0  || !isset($_POST['ID']))
     {
         // redirect unauthorized user at once to homepage
         header('Location: http://localhost/qa/index.php');
         die();
     }
 
-
+    require('../database/models.php');
     // update course files
     $files = getFilesByCourseID($_POST['ID']);
     foreach ($files as $file)
