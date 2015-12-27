@@ -31,7 +31,12 @@
                 break;
 
             case 'instractor':
-                // TODO: add in Sunday build
+                $navbar_content = array(
+                    array("index.php" , "Home"),
+                    array("http://localhost/qa/instractor/index.php" , "DashBoard"),
+                    array("about.php", "About"),
+                    array("contact.php", "Contact")
+                );
                 break;
 
             case 'department_manager':
