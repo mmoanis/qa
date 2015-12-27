@@ -33,7 +33,7 @@
             case 'instractor':
                 $navbar_content = array(
                     array("index.php" , "Home"),
-                    array("http://localhost/qa/instractor/index.php" , "DashBoard"),
+                    array("http://localhost/qa/instructor/index.php" , "DashBoard"),
                     array("about.php", "About"),
                     array("contact.php", "Contact")
                 );
