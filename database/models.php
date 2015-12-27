@@ -274,4 +274,15 @@
        return false;
    }
 
+   //update file's data
+   function updateFileData($id,$new_data){
+       checkConnectivity();
+    if (empty($new_data))
+        $query =sprintf("update file set data = '%s' where ID = %s",$new_data,$id);
+    else
+        $query =sprintf("update file set data = NULL where ID = %s",$id);
+       mysqli_query($GLOBALS['connection_link'],$query);
+       return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
+   }
+
 ?>
