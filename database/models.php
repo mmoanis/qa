@@ -347,13 +347,11 @@
 	function getCourseProgress($course_id){
 		checkConnectivity();
 		
-       $query =sprintf("select * from file where course_id = %s and data is NULL",$course_id);
+       $query =sprintf("SELECT count(*) as total from file where course_id = %s and data is NULL",$course_id);
        $result =mysqli_query($GLOBALS['connection_link'],$query);
-	   $count =0;
-	   if($row = mysqli_fetch_assoc($result)){
-           $count = $count +1;
-       }
-       return $count;
+	   
+	   $row = mysqli_fetch_assoc($result);
+       return $row['total'];
    
    }
 
