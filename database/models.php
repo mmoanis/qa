@@ -250,6 +250,39 @@
        return $list;
    }
    
+   //get department courses and their progress
+   //get course progress by $output['progress']
+   function getDepartmentCoursesProgess($department_id){
+		checkConnectivity();
+
+       $list= array();
+       $query =sprintf("select * from course where department_id = %s",$department_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+		   $row['progress']=getCourseProgress($row['ID']);
+           $list[]=$row;
+       }
+
+       return $list;
+   }
+   
+   //get department Avg progress
+   function getAvgDepartmentProgess($department_id){
+		checkConnectivity();
+
+       $totalProgress =0;
+	   $totalCources= 0;
+	   $avgProgress =0;
+       $query =sprintf("select * from course where department_id = %s",$department_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+		   $totalProgress=$totalProgress +getCourseProgress($row['ID']);
+		   $totalCources=$totalCources+1;
+       }
+		$avgProgress = $totalProgress / $totalCources;
+       return $avgProgress;
+   }
+   
    // =========================== Course ======================================
    //insert new course
    function insertCourse($code,$name,$semester,$year,$instructor_id,$department_id){

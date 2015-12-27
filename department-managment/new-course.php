@@ -18,7 +18,7 @@
     	if ($department == false)
     		die('D\'oh!');
 
-    	insertCourse($_POST['code'],$_POST['name'],$_POST['semester'],$_POST['year'],$_POST['instructor'],$department['ID']);
+    	insertCourse($_POST['code'],$_POST['name'],$_POST['semester'],substr($_POST['year'], 0, 4),$_POST['instructor'],$department['ID']);
 
     	unset($_POST['code']);
     	unset($_POST['name']);
