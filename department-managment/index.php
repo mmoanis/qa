@@ -25,9 +25,9 @@
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),
-        array("new-course.php", "Add new course."),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us.")
+        array("new-course.php", "Add new course"),
+        array("../about.php", "About"),
+        array("../contact.php", "Contact")
     );
 
 
