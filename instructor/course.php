@@ -35,7 +35,7 @@
     // add information about the 6 files of the Course
     foreach ($files as $file)
     {
-        $body_section_content .= $file['type'] .': <input type="text" name="'.$file['type'].'" value="';
+        $body_section_content .= str_replace("_", " ", $file['type']) .': <input type="text" name="'.$file['type'].'" value="';
         if ($file['data'] == NULL)
             $body_section_content .= '" placeholder="Insert Link to file."/><br>';
         else
