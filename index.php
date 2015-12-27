@@ -40,7 +40,13 @@
                 break;
 
             case 'department_manager':
-                // TODO: add in Sunday build
+                $navbar_content = array(
+                    array("index.php" , "Home"),
+                    array("http://localhost/qa/department-managment/index.php" , "DashBoard"),
+                    array("http://localhost/qa/department-managment/new-course.php" , "New Course"),
+                    array("about.php", "About"),
+                    array("contact.php", "Contact")
+                );
                 break;
 
             case 'waiting user':
