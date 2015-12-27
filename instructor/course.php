@@ -49,7 +49,7 @@
         array("../index.php" , "Home"),
         array("index.php" , "DashBoard"),
         array("../about.php", "About"),
-        array("../contact.php", "ContacT")
+        array("../contact.php", "Contact")
     );
 
 
