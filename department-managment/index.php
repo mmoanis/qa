@@ -36,6 +36,7 @@
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),
+        array("index.php", "DashBoard"),
         array("new-course.php", "Add new course"),
         array("../about.php", "About"),
         array("../contact.php", "Contact")
