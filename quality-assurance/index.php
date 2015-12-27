@@ -15,17 +15,21 @@
     $header_section_extras = "";
     $body_tag_extras = "";
 
+    $navbar_signup_login = "";
+
     $body_section_styles = "";
     $body_section_scripts = "";
 
     // TODO: fill qa_member content when database is ready
-    $body_section_content = '';
+    require('../database/models.php');
 
+    $body_section_content = '';
+    
+    $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us."),
-        array("../logout.php", "Sign out.")
+        array("../about.php", "About"),
+        array("../contact.php", "Contact")
     );
 
 
