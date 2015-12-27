@@ -7,6 +7,7 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
+    $navbar_signup_login = "";
 
     $header_tag_extras = "";
     $header_section_styles = "";
@@ -21,12 +22,12 @@
     // TODO: fill department_manager content when database is ready
     $body_section_content = '';
 
+    $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),
-        array("new-course.php", "Add new course."),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us."),
-        array("../logout.php", "Sign out.")
+        array("new-course.php", "Add new course"),
+        array("../about.php", "About"),
+        array("../contact.php", "Contact")
     );
 
 

@@ -102,7 +102,7 @@ ALTER TABLE `course`
 -- Constraints for table `department`
 --
 ALTER TABLE `department`
-ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`manager_id`) REFERENCES `user` (`ID`);
+ADD CONSTRAINT `department_ibfk_1` FOREIGN KEY (`manager_id`) REFERENCES `user` (`ID`)  ON DELETE SET NULL ON UPDATE SET NULL;;
 
 --
 -- Constraints for table `file`
