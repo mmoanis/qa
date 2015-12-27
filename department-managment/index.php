@@ -19,7 +19,6 @@
     $body_section_styles = "";
     $body_section_scripts = "";
 
-    // TODO: fill department_manager content when database is ready
     require('../database/models.php');
 
     $result_allcourses = getAllCoursesByManagerID($_SESSION['user_id']);
@@ -28,7 +27,9 @@
     $body_section_content = '<h1>List of Courses in ' . $result_derpartment['name'] .' Department</h1>';
     $body_section_content .= '<ol>';
     foreach ($result_allcourses as $val) {
-        $body_section_content .=  '<li><a href="course.php?page_course_id=' . $val['ID'] . '">' . $val['name'] . "</a></li>";
+        $progress = 6 - getCourseProgress($val['ID']);
+        $body_section_content .=  '<li><a href="course.php?page_course_id=' . $val['ID'] . '">' . $val['name'] . '"</a>
+        <progress value="'.$progress.'" max="6"></progress></li>';
     }
     $body_section_content .= '</ol>' ;
 
