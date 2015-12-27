@@ -13,7 +13,7 @@
     $files = getFilesByCourseID($_POST['ID']);
     foreach ($files as $file)
     {
-        updateFileData($file['ID'],$_POST[$file['type']])
+        updateFileData($file['ID'],$_POST[$file['type']]);
     }
 
     unset($_POST['type']);
