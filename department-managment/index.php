@@ -20,7 +20,9 @@
     $body_section_scripts = "";
 
     require('../database/models.php');
-
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
+    
     $result_allcourses = getAllCoursesByManagerID($_SESSION['user_id']);
     $result_derpartment = getDepartmentByManagerID($_SESSION['user_id']);
     $department_progress = getAvgDepartmentProgess($result_derpartment['ID']);

@@ -20,7 +20,9 @@
 
     //require('../database/selectQuires.php');
     require('../database/models.php');
-
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
+    
     $result_pending = getAllPendingUsers();
     $body_section_content = '<h1>List of pending users</h1>';
     $body_section_content .= '<ol>';

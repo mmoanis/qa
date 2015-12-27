@@ -21,6 +21,8 @@
 
     $navbar_signup_login = "";
     require('../database/models.php');
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
     // get all files
     $course = getInfoByCourseID($_REQUEST['page_course_id']);
     $files = getFilesByCourseID($_REQUEST['page_course_id']);

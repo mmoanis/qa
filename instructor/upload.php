@@ -7,7 +7,7 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
+    
     $header_tag_extras = "";
     $header_section_styles = "";
     $header_section_metas = "";
@@ -21,6 +21,9 @@
     $body_section_scripts = "";
 
     require('../database/models.php');
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
+    
     // update course files
     $files = getFilesByCourseID($_POST['ID']);
     foreach ($files as $file)

@@ -9,7 +9,8 @@
     }
 
     require('../database/models.php');
-
+    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
+    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
     // check if form submitted
     if (isset($_POST['code']) && isset($_POST['name']) &&
      isset($_POST['semester']) && isset($_POST['year']) && isset($_POST['instructor']) )
