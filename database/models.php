@@ -400,5 +400,22 @@
        mysqli_query($GLOBALS['connection_link'],$query);
        return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
    }
+   
+   //returns types of missing file for a course
+   function getTypesOfMissingFiles($course_id){
+		$fileTypes=array("Course_Specifications","Materials_&_Labs","Assignments_&_Project_Documents","Midterm_Exam","Final_Exam","End_of_Course_Report");
+		checkConnectivity();
+
+       $list= array();
+       $query =sprintf("select type from file where course_id = %s",$course_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+			if(in_array($row['type'], $fileTypes)){
+				$list[]= $row['type'];  
+			}
+       }
+
+       return array_diff($fileTypes, $list);;
+   }
 
 ?>
