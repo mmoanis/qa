@@ -2,67 +2,40 @@
 @charset "UTF-8";
 
 	#header {
-		background: rgba(4, 40, 68, 0.85);
+		background-color: #262626;
 		color:white;
 		text-align:center;
 		padding:10px;
 	}
 	#header-inside {
 		background-image: url(../images/headerbanner.png);
-		background-size: 950px;
+		background-size: 1000px;
 		background-repeat: no-repeat;
 		width: 1000px;
-		height: 100px;
+		height: 95px;
 		margin: auto;
 		position: relative;
 	}
 	#logo{
 		float: left;
 		padding-top: 0px;
-		padding-left: 450px;
+		padding-left: 480px;
 		position: absolute;
 	}
 	img {
 		border: none;
 	}
-	#navi {
-		height: 67px;
-		width: 1024px;
-		padding-top: 75px;
-		padding-left: 270px;
-		position: absolute;
-	}
-
-	#navi ul
-	{
-		text-align: left;
-		margin: auto;
-		width: 1024px;
-	}
-
-	#navi ul li
-	{
-		display: inline;
-		padding: 0px;
-		margin: 0px;
-	}
-	a:link{color:#0964a9;}
-	a:visited{color:#0964a9;}
 	#footer {
 		position:absolute;
 		bottom:0;
 		width:100%;
-		height:60px;			/* Height of the footer */
-		background: rgba(4, 40, 68, 0.85);
+		height:50px;			/* Height of the footer */
+		background-color: #262626;
 		color:white;
 		text-align:center;
 		clear:both;
+		font-size : large;
+		font-color :#595959;
 	}
-	#nav {
-	    line-height:40px;
-	    background-color:#999999;
-	    height:462px;
-	    width:100px;
-	    float:left;
-	    padding:5px;
-	}
+
+}

@@ -19,6 +19,7 @@
     $body_section_styles = "";
     $body_section_scripts = "";
 
+    $navbar_signup_login = "";
     require('../database/selectQuires.php');
     // get all files
     $course = getInfoByCourseID($_REQUEST['page_course_id']);
@@ -43,13 +44,13 @@
         Type6: <input type="text" name="type6" value="'. $_files['type6'] .'"><br>
         <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
         </form>'
-
+        
+    $navbar_signup_login = false;
     $navbar_content = array(
-        array("../index.php", "Home"),
-        array("index.php", "DashBoard."),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us."),
-        array("../logout.php", "Sign out.")
+        array("../index.php" , "Home"),
+        array("index.php" , "DashBoard"),
+        array("../about.php", "About"),
+        array("../contact.php", "ContacT")
     );
 
 

@@ -7,7 +7,7 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
+    $navbar_signup_login = "";
     $header_tag_extras = "";
     $header_section_styles = "";
     $header_section_metas = "";
@@ -47,13 +47,12 @@
         </select><br>
         <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
     </form>';
-
+    $navbar_signup_login = false;
     $navbar_content = array(
-        array("../index.php", "Home"),
-        array("index.php", "DashBoard."),
-        array("../about.php", "About us."),
-        array("../contact.php", "contact us."),
-        array("../logout.php", "Sign out.")
+        array("../index.php" , "Home"),
+        array("index.php", "DashBoard"),
+        array("../about.php", "About"),
+        array("../contact.php", "Contact")
     );
 
 
