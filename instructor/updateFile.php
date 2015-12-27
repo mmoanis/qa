@@ -7,10 +7,6 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
-    require('../database/models.php');
-    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
-    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
     // update course files
     $files = getFilesByCourseID($_POST['ID']);
     foreach ($files as $file)
