@@ -212,6 +212,18 @@
    }
    
    //get department ID by department Manager ID
+   function getDepartmentIDByManagerID($manager_id){
+		checkConnectivity();
+
+       $query =sprintf("select ID from department where manager_id = %s",$manager_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       if($row = mysqli_fetch_assoc($result)){
+          return $row['ID']; 
+       }
+
+       return false;
+   }
+   
    function getDepartmentByManagerID($manager_id){
 		checkConnectivity();
 
