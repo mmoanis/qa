@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `department` (
 
 CREATE TABLE IF NOT EXISTS `file` (
   `ID` int(12) NOT NULL AUTO_INCREMENT,
-  `data` varchar(100) NOT NULL,
+  `data` varchar(100) DEFAULT NULL,
   `type` varchar(6) NOT NULL,
   `course_id` int(12) NOT NULL,
   PRIMARY KEY (`ID`),

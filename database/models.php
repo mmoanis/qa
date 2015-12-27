@@ -17,7 +17,7 @@
     function checkConnectivity(){
        if ($GLOBALS['connection_link'] == NULL)
                connectTODb();
-			   
+
    }
 
    //======================================== Login ===========================
@@ -212,7 +212,7 @@
 	   $result= mysqli_affected_rows($GLOBALS['connection_link']);
 	   for ($i ; $i<6; $i++)
        {
-          insertFile($fileTypes[$i],$id,"https://www.google.com");
+          insertFile($fileTypes[$i],$id);
        }
        return $result>0 ;
    }
@@ -227,7 +227,19 @@
            return $row;
        }
        return false;
+   }
 
+   // get list of all courses given by a certain instructor
+   function getAllCoursesByInstructorID($instructor_id){
+       checkConnectivity1();
+
+       $list= array();
+       $query =sprintf("select * from course where instructor_id = %s order by year DESC",$instructor_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+           $list[]=$row;
+       }
+       return $list;
    }
 
    //delete course by id
@@ -242,10 +254,10 @@
 
    // ================================ Files ==================================
    //insert new file
-   function insertFile($type,$course_id,$data){
+   function insertFile($type,$course_id){
        checkConnectivity();
 
-       $query =sprintf("insert into file(type,course_id,data) values('%s',%s,'%s')",$type,$course_id,$data);
+       $query =sprintf("insert into file(type,course_id) values('%s',%s)",$type,$course_id);
        mysqli_query($GLOBALS['connection_link'],$query);
        return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
    }
