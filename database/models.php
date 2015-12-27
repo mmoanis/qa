@@ -122,7 +122,7 @@
    function insertUser($name,$user_name,$password,$email){
        checkConnectivity();
 
-       $query =sprintf("insert into user(name,user_name,password,email, type) values('%s','%s','%s','%s', %d)",$name,$user_name,$password,$email, 5);
+       $query =sprintf("insert into user(name,user_name,password,email, type) values('%s','%s','%s','%s', %d)",$name,$user_name,$password,$email, 4);
        mysqli_query($GLOBALS['connection_link'],$query);
        return mysqli_affected_rows($GLOBALS['connection_link'])>0 ;
    }
