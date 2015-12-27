@@ -34,14 +34,12 @@
         department: <input type="text" name="department" readonly value="'. $result_derpartment['name'] .'"/><br>
         instructor:<select name="instructor">';
     foreach ($result_getAllInstructors as $val) {
-        $body_section_content .=  '<option value=' . $val['ID'] . '>' . $val['name'] . "</option>";
+        $body_section_content .=  '<option value="' . $val['ID'] . '">' . $val['name'] . "</option>";
     }
 
-        $body_section_content .= '</select>
-        <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure that you want to change the instructor?\')">Change</button><br>
-        ';
-    $body_section_content .= '<button type="submit" value="confirm"  onclick="return confirm(\'Are you sure that you want to delete this course?\')">Delete</button>
-    </form>';
+    $body_section_content .= '</select>
+        <button type="submit" value="change"  name="action" onclick="return confirm(\'Are you sure that you want to change the instructor?\')">Change</button><br>';
+    $body_section_content .= '<button type="submit" value="delete"  name="action" onclick="return confirm(\'Are you sure that you want to delete this course?\')">Delete</button></form>';
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php" , "Home"),
