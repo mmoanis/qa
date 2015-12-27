@@ -22,30 +22,25 @@
     require('../database/models.php');
 
     $info = getInfoByCourseID($_REQUEST['page_course_id']);
-
+    $result_derpartment = getDepartmentByManagerID($_SESSION['user_id']);
+    $result_getAllInstructors = getAllInstructors();
     $body_section_content = '<h1> Information About Course: </h1>';
     $body_section_content .= '<form action="approve.php">
         ID: <input type="text" name="ID" readonly value="'. $info['ID'] .'"/><br>
-        username: <input type="text" name="username" readonly value="'. $info['user_name'] .'"/><br>
+        Code: <input type="text" name="code" readonly value="'. $info['code'] .'"/><br>
         Name: <input type="text" name="name" readonly value="'. $info['name'] .'"/><br>
-        email: <input type="text" name="email" readonly value="'. $info['email'] .'"/><br>
-        Role: <input type="text" name="role" readonly value="'. $type .'"/><br>
-        new role:<select name="type">
-            <option value="instractor">Instructor</option>
-            <option value="admin">Admin</option>
-            <option value="qa_member">QA member</option>
-            <option value="department_manager">Department Manager</option>
-        </select><br>
-        Action:<select name="action">
-        ';
-    if (strcmp($type, 'waiting user') == 0)
-        $body_section_content .= '<option value="approve">Approve</option>';
-    else
-        $body_section_content .= '<option value="change">change</option>';
+        semster: <input type="text" name="semster" readonly value="'. $info['semster'] .'"/><br>
+        year: <input type="text" name="year" readonly value="'. $info['year'] .'"/><br>
+        department: <input type="text" name="department" readonly value="'. $result_derpartment['name'] .'"/><br>
+        instructor:<select name="instructor">';
+    foreach ($result_getAllInstructors as $val) {
+        $body_section_content .=  '<option value=' . $val['ID'] . '>' . $val['name'] . "</option>";
+    }
 
-    $body_section_content .= '<option value="delete">Delete</option>
-        </select><br>
-        <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure?\')">Confirm</button>
+        $body_section_content .= '</select>
+        <button type="submit" value="confirm"  onclick="return confirm(\'Are you sure that you want to change the instructor?\')">Change</button><br>
+        ';
+    $body_section_content .= '<button type="submit" value="confirm"  onclick="return confirm(\'Are you sure that you want to delete this course?\')">Delete</button>
     </form>';
     $navbar_signup_login = false;
     $navbar_content = array(
@@ -58,5 +53,5 @@
 
     include ("../templates/base.php");
 
-    unset($_REQUEST['page_user_id']);
+    unset($_REQUEST['page_course_id']);
 ?>
