@@ -18,7 +18,7 @@
 
     $body_section_styles = "";
     $body_section_scripts = "";
-    $body_section_content = "<p1>Your request is pending, please contact the site Admin to approve your request</p1>";
+    $body_section_content = "<p1>Your request is pending, please contact the site admin to approve your request.</p1>";
 
     $navbar_signup_login = false;
     $navbar_content = array(
