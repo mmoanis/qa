@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['user_id']) || strcmp($_SESSION['type'], 'waiting user') != 0)
+    {
+        // redirect unauthorized user at once to homepage
+        header('Location: http://localhost/qa/index.php');
+        die();
+    }
+
     $header_tag_extras = "";
     $header_section_styles = "";
     $header_section_metas = "";
@@ -10,6 +18,7 @@
     $body_section_scripts = "";
     $body_section_content = "<p1>Your request is pending, please contact the site Admin to approve your request</p1>";
 
+    $navbar_signup_login = false;
     $navbar_content = array(
         array("index.php", "Home"),
         array("about.php", "About us."),
