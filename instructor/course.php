@@ -26,7 +26,7 @@
     $files = getFilesByCourseID($_REQUEST['page_course_id']);
 
     $body_section_content = '<h1> Information About Course: </h1><p>You can add links to files, remove links or update links</p>';
-    $body_section_content .= '<form method="POST" action="upload.php">
+    $body_section_content .= '<form method="POST" action="updateFile.php">
         ID: <input type="text" readonly name="ID" value="'. $course['ID']  .'"><br>
         Name: <input type="text" readonly name="name" value="'.$course['name'].'"><br>
         Code: <input type="text" readonly name="code" value="'.  $course['code'] .'"><br>
