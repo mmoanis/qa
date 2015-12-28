@@ -316,6 +316,8 @@
 		   $totalProgress=$totalProgress +getCourseProgress($row['ID']);
 		   $totalCources=$totalCources+1;
        }
+	   if($totalCources == 0 )
+	   return 0;
 		$avgProgress =  ($totalCources*6 - $totalProgress) /($totalCources*6) ;
        return $avgProgress;
    }

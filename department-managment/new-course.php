@@ -73,7 +73,7 @@
 	    {
 	    	$body_section_content .= '<option value="'.$instructor['ID']. '">'.$instructor['name'].'</option><br>';
 	    }
-	    $body_section_content .= '</select><br><input type="submit" value="Add" /> <input type="reset" value="clear"/></form>';
+	    $body_section_content .= '</select><br><input type="submit" value="Add" onclick="return confirm(\'Are you sure?\')"/> <input type="reset" value="clear"/></form>';
 
 	    $navbar_signup_login = false;
 	    $navbar_content = array(

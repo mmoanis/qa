@@ -95,7 +95,7 @@
           <form action="signup.php" method="POST">
             <hr>
             <label id="icon" for="name"><i class="icon-envelope "></i></label>
-            <input type="text" name="email" placeholder="Email" required/>
+            <input type="email" name="email" placeholder="Email" required/>
 
             <label id="icon" for="name"><i class="icon-user"></i></label>
             <input type="text" name="name" placeholder="Name" required/>
