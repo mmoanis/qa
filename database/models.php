@@ -356,10 +356,10 @@
    }
    
    //check course code exists
-   function checkCourseCodeExists($course_code){
+   function checkCourseCodeExists($course_code, $semster, $year){
 		checkConnectivity();
 
-       $query =sprintf("SELECT * from course where code = '%s'",$course_code);
+       $query =sprintf("SELECT * from course where code = '%s' and semster = '%s' and year = '%s'",$course_code, $semster, $year);
        $result =mysqli_query($GLOBALS['connection_link'],$query);
        if($row = mysqli_fetch_assoc($result)){
            return true;

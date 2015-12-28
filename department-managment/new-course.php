@@ -19,12 +19,19 @@
     	if ($department == false)
     		die('D\'oh!');
 
-    	insertCourse($_POST['code'],$_POST['name'],$_POST['semester'],substr($_POST['year'], 0, 4),$_POST['instructor'],$department['ID']);
-
-    	// create directory for course uploads
-    	if (!file_exists('../uploads/'.$_POST['code'])) {
-    		mkdir('../uploads/'.$_POST['code'], 0777, true);
-		}
+    	if (!checkCourseCodeExists($_POST['code'], $_POST['semester'], substr($_POST['year'], 0, 4))) {
+    		if (insertCourse($_POST['code'],$_POST['name'],$_POST['semester'],substr($_POST['year'], 0, 4),$_POST['instructor'],$department['ID'])) {
+    			// create directory for course uploads
+		    	if (!file_exists('../uploads/'.$_POST['code'].'_'.$_POST['semester'].'_'.substr($_POST['year'], 0, 4))) {
+		    		mkdir('../uploads/'.$_POST['code'].'_'.$_POST['semester'].'_'.substr($_POST['year'], 0, 4), 0777, true);
+				}
+    		} else {
+    			echo "Failed to Add new Course, contact Technical support";
+    		}	
+    	}
+    	else
+    		echo "Course Already Exists!";
+    	
     	unset($_POST['code']);
     	unset($_POST['name']);
     	unset($_POST['semester']);
@@ -32,7 +39,7 @@
     	unset($_POST['instructor']);
 
     	// redirect to homepage
-        header('Location: http://localhost/qa/department-managment/index.php');
+        header('refresh:1; url=http://localhost/qa/department-managment/index.php');
         die();
     }
     else
@@ -60,7 +67,7 @@
 	    			 </select><br>
 	        Year: <input type="month" required name="year" /><br>
 	        Instructor: <select name="instructor">
-	        				<option value="NULL"></option><br>';
+	        				<!--<option value="NULL"></option><br>-->';
 	    $instructors = getAllInstructors();
 	    foreach ($instructors as $instructor)
 	    {
