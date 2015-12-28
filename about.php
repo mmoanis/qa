@@ -12,7 +12,7 @@
 
     $body_section_styles = "";
     $body_section_scripts = "";
-    $body_section_content = "";
+    $body_section_content = "<p>Cairo University, Faculty of Engineering QA committe website.<br>All Rights Reserved.</p>";
 
     $navbar_signup_login = "";
 
