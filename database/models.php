@@ -236,19 +236,7 @@
        return false;
    }
    
-   //get all courses by department manager id
-   function getAllCoursesByManagerID($manager_id){
-		checkConnectivity();
-
-       $list= array();
-       $query =sprintf("select * from course where department_id = %s",getDepartmentIDByManagerID($manager_id));
-       $result =mysqli_query($GLOBALS['connection_link'],$query);
-       while($row = mysqli_fetch_assoc($result)){
-           $list[]=$row;
-       }
-
-       return $list;
-   }
+   
    
    //get department courses and their progress
    //get course progress by $output['progress']
