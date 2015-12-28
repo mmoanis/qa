@@ -18,6 +18,12 @@
         <link rel="stylesheet" href="http://localhost/qa/static-files/css/signupstyle.css">
 
 <?php
+
+	function validate_username($input,$pattern = '[^A-Za-z0-9]')
+	{
+		return !ereg($pattern,$input);
+	}
+	
     if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['name']))
     {
         $username  = $_POST['username'];
@@ -39,7 +45,9 @@
         {
             $error = '<li>Username already exists.</li>';
         }
-
+		else if(!validate_username($username)){
+			$error = '<li>Username should contain only letters and digits</li>';
+		}
         if (strlen($name) > 30)
         {
             $error .= '<li>Name must be less than 30 characters.</li>';
@@ -95,7 +103,7 @@
           <form action="signup.php" method="POST">
             <hr>
             <label id="icon" for="name"><i class="icon-envelope "></i></label>
-            <input type="text" name="email" placeholder="Email" required/>
+            <input type="email" name="email" placeholder="Email" required/>
 
             <label id="icon" for="name"><i class="icon-user"></i></label>
             <input type="text" name="name" placeholder="Name" required/>
