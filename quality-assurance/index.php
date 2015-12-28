@@ -34,7 +34,7 @@
                         <option value="Spring">Spring</option>
                         <option value="Summer">Summer</option>
                     </select><br><br>';
-    $body_section_content .= '<button type="submit" name="action" value="show" onclick="return confirm(\'Are you sure?\')">Show<br>
+    $body_section_content .= '<button type="submit" name="action" value="show" >Show<br>
     </form>';
     $navbar_signup_login = false;
     $navbar_content = array(
