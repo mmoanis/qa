@@ -8,12 +8,7 @@
         header('Location: http://localhost/qa/index.php');
         die();
     }
-
-    //require('../database/deleteQuires.php');
-    //require('../database/insetQuires.php');
     require('../database/models.php');
-    $loggedin_user_info = getUserInfoByUserID($_SESSION['user_id']);
-    $logged_in_name = "Welcome " . $loggedin_user_info['name'];
     
     // delete the user
     if (strcmp($_REQUEST['action'], 'delete') == 0 )

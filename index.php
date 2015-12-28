@@ -12,7 +12,7 @@
     $body_section_styles = "";
     $body_section_scripts = "";
     $body_section_content = '<p> Welcome to the Quality Assurance Committee website for Cairo University, Faculty of Engineering</p>
-    <p>Use the navigation bar to the left to go through the website</p>';
+    <p>Use the navigation bar to the left to go through the website.<br> ';
 
     if (isset($_SESSION['user_id']))
     {
@@ -24,15 +24,17 @@
         // check user type
         switch ($_SESSION['type']) {
             case 'qa_member':
+                $body_section_content .= 'You can see departments progress from the Dashboard.';
                 $navbar_content = array(
                     array("index.php" , "Home"),
-                    array("http://localhost/qa/quality-assurance/index.php" , "DashBoard"),
+                    array("http://localhost/qa/quality-assurance/index.php" , "Dashboard"),
                     array("about.php", "About"),
                     array("contact.php", "Contact")
                 );
                 break;
 
             case 'admin':
+                $body_section_content .= 'You can approve pending users, change users type or delete user accounts';
                 $navbar_content = array(
                     array("index.php" , "Home"),
                     array("http://localhost/qa/admin/index.php" , "DashBoard"),
@@ -42,6 +44,7 @@
                 break;
 
             case 'instractor':
+                $body_section_content .= 'You add, update or remove links or upload QA files';
                 $navbar_content = array(
                     array("index.php" , "Home"),
                     array("http://localhost/qa/instructor/index.php" , "DashBoard"),
@@ -51,6 +54,7 @@
                 break;
 
             case 'department_manager':
+                $body_section_content .= 'You can view the department\'s courses progress and add new courses.';
                 $navbar_content = array(
                     array("index.php" , "Home"),
                     array("http://localhost/qa/department-managment/index.php" , "DashBoard"),
@@ -83,6 +87,6 @@
         );
     }
 
-
+    $body_section_content .= '</p>';
     include ("templates/base.php");
 ?>
