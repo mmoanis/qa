@@ -26,18 +26,20 @@
 
     $result_allDepartments = getAllDepartments();
 
+    $_REQUEST['year'] = substr($_REQUEST['year'], 0 , 4);
+
     $allDepartmentsTotalAverageProgress = 0;
     $count = 0;
     $body_section_content = '<h1>List of Departments</h1>';
     $body_section_content .= '<ol>';
     foreach ($result_allDepartments as $val) {
-        $allDepartmentsTotalAverageProgress += getAvgDepartmentProgessBySemester($val['ID'],$_SESSION['year'],$_SESSION['semster']);
-        $progress = getAvgDepartmentProgessBySemester($val['ID'],$_SESSION['year'],$_SESSION['semster']);
+        $allDepartmentsTotalAverageProgress += getAvgDepartmentProgessBySemester($val['ID'],$_REQUEST['year'],$_REQUEST['semster']);
+        $progress = getAvgDepartmentProgessBySemester($val['ID'],$_REQUEST['year'],$_REQUEST['semster']);
         $body_section_content .=  '<li>' . $val['name'] . '
         <progress value="'. $progress .'" max="1"></progress></li>';
         $count++;
     }
-    $body_section_content .= '</ol><br>Total Progress of all departments is <progress value="' . $allDepartmentsTotalAverageProgress/$count . '" max"1"></progress>';
+    $body_section_content .= '</ol><br>Total Progress of all departments for semster ' . $_REQUEST['semster'] . ' ' . $_REQUEST['year'] .' is <progress value="' . $allDepartmentsTotalAverageProgress/$count . '" max"1"></progress>';
     $navbar_signup_login = false;
     $navbar_content = array(
         array("../index.php", "Home"),

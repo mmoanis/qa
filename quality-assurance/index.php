@@ -28,8 +28,8 @@
     
     $body_section_content = '<h3>Select the year and semster to view the department progress in this year and semster</h3>';
     $body_section_content .= '<form action="view.php">
-        Year: <input type="text" required name="year"/><br><br>
-        Semester:  <select name="semester">
+        Year: <input type="month" required name="year"/><br><br>
+        Semester:  <select name="semster">
                         <option value="Fall">Fall</option>
                         <option value="Spring">Spring</option>
                         <option value="Summer">Summer</option>
