@@ -236,19 +236,7 @@
        return false;
    }
    
-   //get all courses by department manager id
-   function getAllCoursesByManagerID($manager_id){
-		checkConnectivity();
-
-       $list= array();
-       $query =sprintf("select * from course where department_id = %s",getDepartmentIDByManagerID($manager_id));
-       $result =mysqli_query($GLOBALS['connection_link'],$query);
-       while($row = mysqli_fetch_assoc($result)){
-           $list[]=$row;
-       }
-
-       return $list;
-   }
+   
    
    //get department courses and their progress
    //get course progress by $output['progress']
@@ -274,6 +262,55 @@
 	   $totalCources= 0;
 	   $avgProgress =0;
        $query =sprintf("select * from course where department_id = %s",$department_id);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+		   $totalProgress=$totalProgress +getCourseProgress($row['ID']);
+		   $totalCources=$totalCources+1;
+       }
+	   if($totalCources ==0)
+		return 0;
+		$avgProgress =  ($totalCources*6 - $totalProgress) /($totalCources*6) ;
+       return $avgProgress;
+   }
+   
+   //get all courses by department manager id
+   function getAllCoursesByManagerID($manager_id){
+		checkConnectivity();
+
+       $list= array();
+       $query =sprintf("select * from course where department_id = %s",getDepartmentIDByManagerID($manager_id));
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+           $list[]=$row;
+       }
+
+       return $list;
+   }
+   
+   //get department courses and their progress
+   //get course progress by $output['progress']
+   function getDepartmentCoursesProgessBySemester($department_id,$year,$semester){
+		checkConnectivity();
+
+       $list= array();
+        $query =sprintf("select * from course where department_id = %s and year = '%s' and semster = '%s' ",$department_id,$year,$semester);
+       $result =mysqli_query($GLOBALS['connection_link'],$query);
+       while($row = mysqli_fetch_assoc($result)){
+		   $row['progress']=getCourseProgress($row['ID']);
+           $list[]=$row;
+       }
+
+       return $list;
+   }
+   
+   //get department Avg progress by semester
+   function getAvgDepartmentProgessBySemester($department_id,$year,$semester){
+		checkConnectivity();
+
+       $totalProgress =0;
+	   $totalCources= 0;
+	   $avgProgress =0;
+       $query =sprintf("select * from course where department_id = %s and year = '%s' and semster = '%s' ",$department_id,$year,$semester);
        $result =mysqli_query($GLOBALS['connection_link'],$query);
        while($row = mysqli_fetch_assoc($result)){
 		   $totalProgress=$totalProgress +getCourseProgress($row['ID']);
@@ -354,6 +391,9 @@
        return $row['total'];
    
    }
+   
+  
+   
    
    //check course code exists
    function checkCourseCodeExists($course_code, $semster, $year){
