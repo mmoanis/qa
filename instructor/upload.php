@@ -17,7 +17,7 @@
     $db_files = getFilesByCourseID($_POST['ID']);
 
     // base directory
-    $target_dir = "../uploads/" . $course['code'] .'_'.$course['semester'].'_'.$course['year'] .'/';
+    $target_dir = "../uploads/" . $course['code'] .'_'.$course['semster'].'_'.$course['year'] .'/';
     $uploadOk = 1;
 
     foreach ($names as $name) {
