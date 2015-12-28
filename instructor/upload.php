@@ -66,6 +66,6 @@
         }
     }
     echo "</ol><p>";
-    //header('refresh:3; url=http://localhost/qa/instructor/index.php');
+    header('refresh:3; url=http://localhost/qa/instructor/index.php');
     die();
 ?>
